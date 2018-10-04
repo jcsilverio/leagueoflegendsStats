@@ -33,6 +33,15 @@ class Navbar extends Component {
               placeholder="Search..."
               autoComplete="off"
             />
+            <span className="input-group-btn">
+              <button
+                className="btn-primary search-submit"
+                target="#search-nav"
+                type="button"
+              >
+                <span className="fa fa-search" />
+              </button>
+            </span>
           </div>
         </div>
       </nav>
