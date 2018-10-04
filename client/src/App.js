@@ -39,7 +39,7 @@ class App extends Component {
           <li>Id: {this.state.id}</li>
           <li> profileid: {this.state.profileIconId}</li>
           <li>
-            <img src={summImage} />
+            <img src={summImage} alt="summoner profile pic" />
           </li>
 
           <li>Summoner level: {this.state.summonerLevel}</li>
