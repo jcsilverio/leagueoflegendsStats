@@ -33,21 +33,6 @@ class Match extends Component {
     return (
       <div className="card card-body bg-light mb-3">
         <div className="row">
-          <div className="col-2">
-            <img
-              className="rounded-circle"
-              src={summImage}
-              alt="summoner profile pic"
-            />
-          </div>
-          <div className="col-lg-6 col-md-4 col-8">
-            <h3>{this.state.name}</h3>
-            <p>Id: {this.state.id}</p>
-            <p>profileid: {this.state.profileIconId}</p>
-            <a href="profile.html" className="btn btn-info">
-              View Profile
-            </a>
-          </div>
           <div className="col-md-4 d-none d-lg-block">
             <h4>List of Requirements</h4>
             <ul className="list-group">
