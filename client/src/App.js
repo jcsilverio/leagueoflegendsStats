@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import "./App.css";
 import Navbar from "./components/layout/Navbar";
 import Footer from "./components/layout/Footer";
+import Stats from "./components/layout/Stats";
 
 class App extends Component {
   state = {
@@ -36,7 +37,17 @@ class App extends Component {
     return (
       <div className="App">
         <Navbar />
-        <h1>Summoner Data</h1>
+        <Stats />
+        <Footer />
+      </div>
+    );
+  }
+}
+
+export default App;
+
+{
+  /* <h1>Summoner Data</h1>
         <ul>
           <li>{this.state.name}</li>
           <li>Id: {this.state.id}</li>
@@ -46,11 +57,5 @@ class App extends Component {
           </li>
 
           <li>Summoner level: {this.state.summonerLevel}</li>
-        </ul>
-        <Footer />
-      </div>
-    );
-  }
+        </ul> */
 }
-
-export default App;
