@@ -1,5 +1,7 @@
 import React, { Component } from "react";
 import "./App.css";
+import Navbar from "./components/layout/Navbar";
+import Footer from "./components/layout/Footer";
 
 class App extends Component {
   state = {
@@ -33,6 +35,7 @@ class App extends Component {
     }.png`;
     return (
       <div className="App">
+        <Navbar />
         <h1>Summoner Data</h1>
         <ul>
           <li>{this.state.name}</li>
@@ -44,6 +47,7 @@ class App extends Component {
 
           <li>Summoner level: {this.state.summonerLevel}</li>
         </ul>
+        <Footer />
       </div>
     );
   }
