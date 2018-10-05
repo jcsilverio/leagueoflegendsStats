@@ -26,7 +26,7 @@ class App extends Component {
     });
   }
   getSummoner = _ => {
-    fetch("/api/summs")
+    fetch(`/api/summs/`)
       .then(res => res.json())
       .then(res =>
         this.setState({
