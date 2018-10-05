@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import PropTypes from "prop-types";
 import Match from "./Match";
 
-class Stats extends Component {
+class Summoner extends Component {
   state = {
     name: "",
     id: "",
@@ -60,7 +60,6 @@ class Stats extends Component {
                 </a>
               </div>
               <div className="col-lg-3" />
-              <Match />
             </div>
           </div>
         </div>
@@ -69,4 +68,4 @@ class Stats extends Component {
   }
 }
 
-export default Stats;
+export default Summoner;
