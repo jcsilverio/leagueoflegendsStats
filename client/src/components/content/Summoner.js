@@ -36,17 +36,6 @@ class Summoner extends Component {
       <div>
         <div className="container">
           <div className="row">
-            <div className="col-md-12">
-              <h1 className="display-4 text-center">Summoner Stats</h1>
-              <p className="lead text-center">
-                League of Legends Stats Viewing App
-              </p>
-            </div>
-          </div>
-        </div>
-
-        <div className="container">
-          <div className="row">
             <div className="col-lg-3" />
             <div className="col-lg-3">
               <img
