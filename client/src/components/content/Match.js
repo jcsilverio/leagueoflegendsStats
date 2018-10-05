@@ -32,56 +32,23 @@ class Match extends Component {
     }.png`;
     return (
       <div className="container">
-        <div className="row">
-          <div className="card card-body bg-light mb-3">
-            <div className="row">
-              <div className="col-md-4 d-none d-lg-block">
-                <h4>List of Requirements</h4>
-                <ul className="list-group">
-                  <li className="list-group-item">
-                    <i className="fa fa-check pr-1" />
-                    Victory or Defeat
-                  </li>
-                  <li className="list-group-item">
-                    <i className="fa fa-check pr-1" />
-                    Game Length
-                  </li>
-                  <li className="list-group-item">
-                    <i className="fa fa-check pr-1" />
-                    Summoner Spells
-                  </li>
-                  <li className="list-group-item">
-                    <i className="fa fa-check pr-1" />
-                    Summoner Runes
-                  </li>
-                  <li className="list-group-item">
-                    <i className="fa fa-check pr-1" />
-                    Champion Name
-                  </li>
-                  <li className="list-group-item">
-                    <i className="fa fa-check pr-1" />
-                    KDA
-                  </li>
-                  <li className="list-group-item">
-                    <i className="fa fa-check pr-1" />
-                    Items bought during the match - dont need icons
-                  </li>
-                  <li className="list-group-item">
-                    <i className="fa fa-check pr-1" />
-                    Champion level in the match
-                  </li>
-                  <li className="list-group-item">
-                    <i className="fa fa-check pr-1" />
-                    Total creep score
-                  </li>
-                  <li className="list-group-item">
-                    <i className="fa fa-check pr-1" />
-                    Total creep score per minute (total creeps divided by game
-                    length)
-                  </li>
-                </ul>
-              </div>
-            </div>
+        <div className="container">
+          <div className="row">
+            <div className="col-md-2">outcome / duration</div>
+            <div className="col-md-2">champion icon/champion name</div>
+            <div className="col-md-2">champion runes</div>
+            <div className="col-md-2">summoner spells</div>
+            <div className="col-md-2">summoner runes</div>
+            <div className="col-md-2">items bought</div>
+          </div>
+
+          <div className="row">
+            <div className="col-md-2">victory/kda</div>
+            <div className="col-md-2">creep total/creep score per minute</div>
+            <div className="col-md-2" />
+            <div className="col-md-2" />
+            <div className="col-md-2" />
+            <div className="col-md-2" />
           </div>
         </div>
       </div>
