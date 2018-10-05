@@ -9,7 +9,7 @@ require("dotenv").config();
 
 // GET summoner listing
 
-router.get("/", function(req, res, next) {
+router.get("/:summName", function(req, res, next) {
   var api_key = process.env.API_KEY;
   var input_toSearch = "RiotSchmick";
   var URL =

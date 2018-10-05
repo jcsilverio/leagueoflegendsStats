@@ -54,10 +54,12 @@ class App extends Component {
         <Header />
         <Summoner name={this.state.name} />
         <hr />
+
         {this.state.matches.length ? (
           <MatchLog matches={this.state.matches} />
-        ) : null}
-        <Footer />
+        ) : (
+          <img src={require("./img/lol.jpg")} />
+        )}
       </div>
     );
   }
