@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import Search from "../content/Search";
 
 class Navbar extends Component {
   render() {
@@ -27,7 +26,6 @@ class Navbar extends Component {
                 </a>
               </li>
             </ul>
-            <Search />
           </div>
         </div>
       </nav>
@@ -36,5 +34,3 @@ class Navbar extends Component {
 }
 
 export default Navbar;
-
-// class="form-control search-input ui-autocomplete-input"

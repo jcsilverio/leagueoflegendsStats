@@ -1,4 +1,5 @@
 # leagueoflegendsStats
 
 npm install
-npm client-install
+cd client
+npm install
