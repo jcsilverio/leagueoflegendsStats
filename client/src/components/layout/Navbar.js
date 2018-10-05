@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import Search from "../content/Search";
 
 class Navbar extends Component {
   render() {
@@ -26,22 +27,7 @@ class Navbar extends Component {
                 </a>
               </li>
             </ul>
-
-            <input
-              id="search-nav"
-              type="text"
-              placeholder="Search..."
-              autoComplete="off"
-            />
-            <span className="input-group-btn">
-              <button
-                className="btn-primary search-submit"
-                target="#search-nav"
-                type="button"
-              >
-                <span className="fa fa-search" />
-              </button>
-            </span>
+            <Search />
           </div>
         </div>
       </nav>
