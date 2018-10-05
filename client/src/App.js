@@ -5,7 +5,7 @@ import Footer from "./components/layout/Footer";
 import Header from "./components/layout/Header";
 import Summoner from "./components/content/Summoner";
 import Search from "./components/content/Search";
-import Match from "./components/content/Match";
+import MatchLog from "./components/content/MatchLog";
 
 class App extends Component {
   state = {
@@ -43,20 +43,20 @@ class App extends Component {
     return (
       <div className="App">
         <Navbar />
-
         <div className="container">
           <div className="row">
             <div className="col-md-9" />
             <div className="col-md-3">
-              <Search />
+              <Search onSubmit={this.onGetSummoner} />
             </div>
           </div>
         </div>
-
         <Header />
-        <Summoner />
+        <Summoner name={this.state.name} />
         <hr />
-        <Match />
+        {this.state.matches.length ? (
+          <MatchLog matches={this.state.matches} />
+        ) : null}
         <Footer />
       </div>
     );
