@@ -16,24 +16,31 @@ class Match extends Component {
 
   render() {
     return (
-      <li>
+      <div>
         <div className="container">
           <div className="container">
             <div className="row">
-              <div className="col-md-2">
+              <div className="col-md-2 statHeader">
                 outcome/duration
-                {this.props.match.gameId}
+                <p className="statResult">
+                  Test:
+                  {this.props.match.gameId}
+                </p>
               </div>
-              <div className="col-md-2">champion icon/champion name</div>
-              <div className="col-md-2">champion runes</div>
-              <div className="col-md-2">summoner spells</div>
-              <div className="col-md-2">summoner runes</div>
-              <div className="col-md-2">items bought</div>
+              <div className="col-md-2 statHeader">
+                champion icon/champion name
+              </div>
+              <div className="col-md-2 statHeader">champion runes</div>
+              <div className="col-md-2 statHeader">summoner spells</div>
+              <div className="col-md-2 statHeader">summoner runes</div>
+              <div className="col-md-2 statHeader">items bought</div>
             </div>
 
             <div className="row">
-              <div className="col-md-2">victory/kda</div>
-              <div className="col-md-2">creep total/creep score per minute</div>
+              <div className="col-md-2 statHeader">victory/kda</div>
+              <div className="col-md-2 statHeader">
+                creep total/creep score per minute
+              </div>
               <div className="col-md-2" />
               <div className="col-md-2" />
               <div className="col-md-2" />
@@ -42,7 +49,7 @@ class Match extends Component {
           </div>
           <hr />
         </div>
-      </li>
+      </div>
     );
   }
 }

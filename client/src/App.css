@@ -41,3 +41,11 @@ img {
 .summ-thumbnail {
   width: 60%;
 }
+.statHeader {
+  font-weight: bold;
+  font-size: 14px;
+}
+.statResult {
+  font-weight: normal;
+  font-size: 12px;
+}
