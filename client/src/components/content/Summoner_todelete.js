@@ -36,32 +36,32 @@ class Summoner extends Component {
     const summImage = `http://ddragon.leagueoflegends.com/cdn/6.24.1/img/profileicon/${
       this.state.profileIconId
     }.png`;
-    if (this.props.summ) {
-      return (
-        <div>
-          <div className="container">
-            <div className="row">
-              <div className="col-lg-3" />
-              <div className="col-lg-3">
-                <img
-                  className="rounded-circle img-thumbnail summ-thumbnail float-right"
-                  src={summImage}
-                  alt="summoner profile pic"
-                />
-              </div>
-              <div className="col-lg-3">
-                <h3>{this.state.name}</h3>
-                <p>Placeholder info</p>
-                <p>Placeholder info 2</p>
-              </div>
-              <div className="col-lg-3" />
+    // if (this.props.name) {
+    return (
+      <div>
+        <div className="container">
+          <div className="row">
+            <div className="col-lg-3" />
+            <div className="col-lg-3">
+              <img
+                className="rounded-circle img-thumbnail summ-thumbnail float-right"
+                src={summImage}
+                alt="summoner profile pic"
+              />
             </div>
+            <div className="col-lg-3">
+              <h3>{this.state.name}</h3>
+              <p>Placeholder info</p>
+              <p>Placeholder info 2</p>
+            </div>
+            <div className="col-lg-3" />
           </div>
         </div>
-      );
-    } else {
-      return null;
-    }
+      </div>
+    );
+    // } else {
+    //   return null;
+    // }
   }
 }
 

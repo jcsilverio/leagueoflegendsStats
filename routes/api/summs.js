@@ -101,7 +101,7 @@ router.get("/:summName", function(req, res, next) {
   );
   res.send(summoner);
   const matchLog = getMatchLog(name_toSearch).then(matches =>
-    console.log(matches)
+    console.log("----> matches are being returned for: ", name_toSearch)
   );
 
   // getScores(name_toSearch)
