@@ -7,25 +7,30 @@ import Search from "./components/content/Search";
 import MatchLog from "./components/content/MatchLog";
 
 class App extends Component {
-  state = {
-    name: "",
-    matches: [],
-    id: "",
-    profileIconId: "",
-    summonerLevel: ""
-  };
-
-  onGetSummoner(summName) {
-    this.setState({
+  constructor() {
+    super();
+    this.state = {
       name: "",
       matches: [],
       id: "",
       profileIconId: "",
       summonerLevel: ""
-    });
+    };
   }
-  getSummoner = _ => {
-    fetch(`/api/summs/`)
+  // TODO: error message function
+
+  // onGetSummoner(summName) {
+  //   this.setState({
+  //     name: "",
+  //     matches: [],
+  //     id: "",
+  //     profileIconId: "",
+  //     summonerLevel: ""
+  //   });
+  // }
+  getSummoner = summName => {
+    console.log("Searching for Summoner: " + summName);
+    fetch(`/api/summs/` + summName)
       .then(res => res.json())
       .then(res =>
         this.setState({
@@ -46,7 +51,7 @@ class App extends Component {
           <div className="row">
             <div className="col-md-9" />
             <div className="col-md-3">
-              <Search onSubmit={this.onGetSummoner} />
+              <Search name={this.state.name} onSubmit={this.getSummoner} />
             </div>
           </div>
         </div>

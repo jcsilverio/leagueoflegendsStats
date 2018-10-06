@@ -3,30 +3,34 @@ import PropTypes from "prop-types";
 import Match from "./Match";
 
 class Summoner extends Component {
-  state = {
-    name: "",
-    id: "",
-    profileIconId: "",
-    summonerLevel: ""
-  };
+  constructor(props) {
+    super(props);
 
-  componentDidMount() {
-    this.getSummoner();
+    this.state = {
+      name: this.props.name,
+      id: this.props.id,
+      profileIconId: this.props.profileIconId,
+      summonerLevel: this.props.summonerLevel
+    };
   }
 
-  getSummoner = _ => {
-    fetch("/api/summs")
-      .then(res => res.json())
-      .then(res =>
-        this.setState({
-          name: res.name,
-          id: res.id,
-          profileIconId: res.profileIconId,
-          summonerLevel: res.summonerLevel
-        })
-      )
-      .catch(err => console.error(err));
-  };
+  // componentDidMount() {
+  //   this.getSummoner();
+  // }
+
+  // getSummoner = _ => {
+  //   fetch("/api/summs/")
+  //     .then(res => res.json())
+  //     .then(res =>
+  //       this.setState({
+  //         name: res.name,
+  //         id: res.id,
+  //         profileIconId: res.profileIconId,
+  //         summonerLevel: res.summonerLevel
+  //       })
+  //     )
+  //     .catch(err => console.error(err));
+  // };
 
   render() {
     const summImage = `http://ddragon.leagueoflegends.com/cdn/6.24.1/img/profileicon/${
@@ -60,5 +64,9 @@ class Summoner extends Component {
     }
   }
 }
+
+Summoner.propTypes = {
+  name: PropTypes.string
+};
 
 export default Summoner;

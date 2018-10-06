@@ -6,7 +6,7 @@ class Search extends Component {
     super(props);
 
     this.state = {
-      SummName: ""
+      name: ""
     };
 
     this.onSubmit = this.onSubmit.bind(this);
@@ -15,11 +15,14 @@ class Search extends Component {
 
   onSubmit(e) {
     e.preventDefault();
-    this.props.onSubmit(this.state.SummName);
+    this.props.onSubmit(this.state.name);
+    this.setState({
+      name: ""
+    });
   }
 
   onSummNameChange(e) {
-    this.setState({ SummName: e.target.value });
+    this.setState({ name: e.target.value });
   }
 
   render() {
@@ -29,7 +32,7 @@ class Search extends Component {
           type="text"
           placeholder="Summoner Name..."
           autoComplete="off"
-          value={this.state.SummName}
+          value={this.state.name}
           onChange={this.onSummNameChange}
         />
         <input type="submit" value="Search" />
@@ -39,7 +42,8 @@ class Search extends Component {
 }
 
 Search.propTypes = {
-  onSubmit: PropTypes.func.isRequired
+  name: PropTypes.string,
+  onSubmit: PropTypes.func
 };
 
 export default Search;
