@@ -99,14 +99,14 @@ router.get("/:summName", function(req, res, next) {
   const summoner = getSummoner(name_toSearch).then(summoner =>
     console.log("here's summoner: ", summoner)
   );
-
+  res.send(summoner);
   const matchLog = getMatchLog(name_toSearch).then(matches =>
     console.log(matches)
   );
 
-  getScores(name_toSearch)
-    .then(matches => res.json(matches))
-    .catch(err => console.log(err));
+  // getScores(name_toSearch)
+  //   .then(matches => res.json(matches))
+  //   .catch(err => console.log(err));
 
   // var URL =
   //   "https://na1.api.riotgames.com/lol/summoner/v3/summoners/by-name/" +
