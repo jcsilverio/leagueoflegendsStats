@@ -37,19 +37,18 @@ async function getSummoner(username) {
   return user;
 }
 
-router.get(":summName", function(req, res, next) {
-  var api_key = process.env.API_KEY;
-  var name_toSearch = "req.params.summName";
+router.get("/:summName", function(req, res, next) {
+  var name_toSearch = req.params.summName;
   const summoner = getSummoner(name_toSearch).then(summoner =>
-    console.log(summoner)
+    console.log("here's summoner: ", summoner)
   );
 
   var URL =
     "https://na1.api.riotgames.com/lol/summoner/v3/summoners/by-name/" +
     name_toSearch +
     "?api_key=" +
-    api_key;
-
+    API_KEY;
+  console.log("<---URL: ", URL);
   axios
     .get(URL)
     .then(response => {
