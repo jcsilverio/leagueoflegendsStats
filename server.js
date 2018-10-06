@@ -1,7 +1,6 @@
 const express = require("express");
 const app = express();
 
-const mongoose = require("mongoose");
 const bodyParser = require("body-parser");
 const path = require("path");
 
@@ -12,23 +11,14 @@ const matches = require("./routes/api/matches");
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
-//DB Config
-const db = require("./config/keys").mongoURI;
-
-// Connect to MongoDB
-mongoose
-  .connect(db)
-  .then(() => console.log("MongoDB Connected"))
-  .catch(err => console.log(err));
-
-// app.use((req, res, next) => {
-//   res.header("Access-Control-Allow-Origin", "*");
-//   res.header(
-//     "Access-Control-Allow-Headers",
-//     "Origin, X-Requested-With, Content-Type, Accept"
-//   );
-//   next();
-// });
+app.use((req, res, next) => {
+  res.header("Access-Control-Allow-Origin", "*");
+  res.header(
+    "Access-Control-Allow-Headers",
+    "Origin, X-Requested-With, Content-Type, Accept"
+  );
+  next();
+});
 
 // Use Routes
 app.use("/api/summs", summs);

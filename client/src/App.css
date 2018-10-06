@@ -41,12 +41,3 @@ img {
 .summ-thumbnail {
   width: 60%;
 }
-
-.footer {
-  position: absolute;
-  bottom: 0;
-  width: 100%;
-  /* he fixed height of the footer */
-  height: 60px;
-  line-height: 60px; /* Vertically center the text */
-}

@@ -1,7 +1,6 @@
 import React, { Component } from "react";
-import "./App.css";
 import Navbar from "./components/layout/Navbar";
-import Footer from "./components/layout/Footer";
+// import Footer from "./components/layout/Footer";
 import Header from "./components/layout/Header";
 import Summoner from "./components/content/Summoner";
 import Search from "./components/content/Search";
