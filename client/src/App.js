@@ -12,8 +12,8 @@ class App extends Component {
     this.state = {
       summonerQueried: false,
       name: "",
-      matches: [],
       id: "",
+      accountID: "",
       profileIconId: "",
       summonerLevel: ""
     };
@@ -23,15 +23,6 @@ class App extends Component {
   }
   // TODO: error message function
 
-  // onGetSummoner(summName) {
-  //   this.setState({
-  //     name: "",
-  //     matches: [],
-  //     id: "",
-  //     profileIconId: "",
-  //     summonerLevel: ""
-  //   });
-  // }
   getSummoner = summName => {
     console.log("Searching for Summoner: " + summName);
     fetch(`/api/summs/` + summName)
@@ -41,6 +32,7 @@ class App extends Component {
           summonerQueried: true,
           name: res.name,
           id: res.id,
+          accountID: res.accountID,
           profileIconId: res.profileIconId,
           summonerLevel: res.summonerLevel
         })
@@ -49,7 +41,7 @@ class App extends Component {
   };
 
   render() {
-    const summImage = `http://ddragon.leagueoflegends.com/cdn/6.24.1/img/profileicon/${
+    const summImage = `http://ddragon.leagueoflegends.com/cdn/8.18.1/img/profileicon/${
       this.state.profileIconId
     }.png`;
     return (
@@ -72,14 +64,12 @@ class App extends Component {
                 <img
                   className="rounded-circle img-thumbnail summ-thumbnail float-right"
                   src={summImage}
-                  alt="summoner profile pic"
+                  alt=""
                 />
               </div>
               <div className="col-lg-3">
-                <h3>The name here:</h3>
                 <h3>{this.state.name}</h3>
-                <p>Placeholder info</p>
-                <p>Placeholder info 2</p>
+                <p>Level {this.state.summonerLevel}</p>
               </div>
               <div className="col-lg-3" />
             </div>
@@ -87,11 +77,11 @@ class App extends Component {
         </div>
         <hr />
 
-        {this.state.matches.length ? (
-          <MatchLog matches={this.state.matches} />
-        ) : (
+        {/* {this.state.matches.length ? ( */}
+        <MatchLog accountID={this.state.accountID} />
+        {/* ) : (
           <img src={require("./img/lol.jpg")} />
-        )}
+        )} */}
       </div>
     );
   }

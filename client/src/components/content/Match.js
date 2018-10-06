@@ -1,30 +1,23 @@
 import React, { Component } from "react";
 
 class Match extends Component {
-  state = {
-    name: "",
-    id: "",
-    profileIconId: "",
-    summonerLevel: ""
-  };
-
-  componentDidMount() {
-    this.getSummoner();
+  constructor(props) {
+    super(props);
+    this.state = {
+      gameId: this.props.key,
+      outcome: null,
+      duration: null,
+      victory: null,
+      kda: null,
+      creepSum: null,
+      creepPerMin: null,
+      championRunes: null,
+      summonerSpells: null,
+      summonerRunes: null,
+      itemsBought: null
+    };
   }
-
-  getSummoner = _ => {
-    fetch("/api/summs")
-      .then(res => res.json())
-      .then(res =>
-        this.setState({
-          name: res.name,
-          id: res.id,
-          profileIconId: res.profileIconId,
-          summonerLevel: res.summonerLevel
-        })
-      )
-      .catch(err => console.error(err));
-  };
+  // componentDidMount() {}
 
   render() {
     const summImage = `http://ddragon.leagueoflegends.com/cdn/6.24.1/img/profileicon/${
@@ -34,7 +27,10 @@ class Match extends Component {
       <div className="container">
         <div className="container">
           <div className="row">
-            <div className="col-md-2">outcome / duration</div>
+            <div className="col-md-2">
+              outcome/duration
+              {this.state.gameId}
+            </div>
             <div className="col-md-2">champion icon/champion name</div>
             <div className="col-md-2">champion runes</div>
             <div className="col-md-2">summoner spells</div>

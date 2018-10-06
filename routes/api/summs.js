@@ -24,7 +24,10 @@ router.get("/:summName", function(req, res, next) {
       res.send(response.data);
     })
     .catch(error => {
-      console.log("Error fetching and parsing data", error);
+      console.log(
+        "/api/summs: Error fetching and parsing summoner data",
+        error
+      );
     });
 });
 
