@@ -19,12 +19,7 @@ class Navbar extends Component {
 
           <div className="collapse navbar-collapse" id="mobile-nav">
             <ul className="navbar-nav mr-auto">
-              <li className="nav-item">
-                <a className="nav-link" href="leaderboards.html">
-                  {" "}
-                  Leaderboards
-                </a>
-              </li>
+              <li className="nav-item" />
             </ul>
           </div>
         </div>
