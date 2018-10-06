@@ -6,8 +6,6 @@ require("dotenv").config();
 const API_KEY = process.env.API_KEY;
 const HTTPS_ROOT = "https://na1.api.riotgames.com";
 const SUMM_URL = "/lol/summoner/v3/summoners/by-name/";
-const MATCH_URL = "/lol/match/v3/matches/";
-const MATCHLOG_URL = "/lol/match/v3/matchlists/by-account/";
 
 // @route   GET api/:summName
 // @desc    summoner route

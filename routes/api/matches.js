@@ -5,7 +5,7 @@ const { Kayn, REGIONS } = require("kayn");
 require("dotenv").config();
 const API_KEY = process.env.API_KEY;
 const HTTPS_ROOT = "https://na1.api.riotgames.com";
-const SUMM_URL = "/lol/summoner/v3/summoners/by-name/";
+
 const MATCH_URL = "/lol/match/v3/matches/";
 const MATCHLOG_URL = "/lol/match/v3/matchlists/by-account/";
 
@@ -20,7 +20,7 @@ router.get("/:accountID", function(req, res, next) {
   axios
     .get(URL)
     .then(response => {
-      console.log("------ MATCH LIST DATA: ", response.data);
+      console.log(response.data);
       res.send(response.data);
     })
     .catch(error => {
@@ -39,7 +39,7 @@ router.get("/:matchID", function(req, res, next) {
   axios
     .get(URL)
     .then(response => {
-      console.log("------ INDIV MATCH DATA: ", response.data);
+      console.log(response.data);
       res.send(response.data);
     })
     .catch(error => {

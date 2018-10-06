@@ -2,43 +2,76 @@ import React, { Component } from "react";
 import Navbar from "./components/layout/Navbar";
 // import Footer from "./components/layout/Footer";
 import Header from "./components/layout/Header";
-// import Summoner from "./components/content/Summoner";
+import Summoner from "./components/content/Summoner";
 import Search from "./components/content/Search";
 import MatchLog from "./components/content/MatchLog";
+import axios from "axios";
 
 class App extends Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
     this.state = {
-      summonerQueried: false,
-      name: "",
-      id: "",
-      accountID: "",
-      profileIconId: "",
-      summonerLevel: ""
+      summoner: null,
+      matches: [],
+      error: ""
     };
+    this.getSummoner = this.getSummoner.bind(this);
   }
-  componentDidMount() {
-    this.getSummoner("riotschmick");
-  }
-  // TODO: error message function
 
-  getSummoner = summName => {
-    console.log("Searching for Summoner: " + summName);
-    fetch(`/api/summs/` + summName)
-      .then(res => res.json())
-      .then(res =>
-        this.setState({
-          summonerQueried: true,
-          name: res.name,
-          id: res.id,
-          accountID: res.accountID,
-          profileIconId: res.profileIconId,
-          summonerLevel: res.summonerLevel
+  // TODO: error message functionality
+
+  getSummoner(summName) {
+    const self = this;
+    self.setState({
+      summoner: null,
+      matches: [],
+      error: ""
+    });
+
+    if (summName.trim().length) {
+      axios
+        .get(`/api/summs/${summName}`)
+        .then(res => {
+          self.setState({ summoner: res.data });
         })
-      )
-      .catch(err => console.error(err));
-  };
+        .then(res => {
+          axios
+            .get(`/api/matches/${self.state.summoner.accountId}`)
+            .then(res => {
+              self.setState({ matches: res.data.matches });
+            })
+            .catch(error => {
+              self.setState({
+                matches: [],
+                error: `match error:  ${error}`
+              });
+            });
+        })
+        .catch(error => {
+          self.setState({
+            summoner: null,
+            error: `summ error: ${error}`
+          });
+        });
+    } else {
+      self.setState({ error: "Enter the name of a summoner" });
+    }
+
+    // console.log("Searching for Summoner: " + summName);
+    // fetch(`/api/summs/` + summName)
+    //   .then(res => res.json())
+    //   .then(res =>
+    //     this.setState({
+    //       summonerQueried: true,
+    //       name: res.name,
+    //       id: res.id,
+    //       accountID: res.accountID,
+    //       profileIconId: res.profileIconId,
+    //       summonerLevel: res.summonerLevel
+    //     })
+    //   )
+    //   .catch(err => console.error(err));
+  }
 
   render() {
     const summImage = `http://ddragon.leagueoflegends.com/cdn/8.18.1/img/profileicon/${
@@ -51,37 +84,26 @@ class App extends Component {
           <div className="row">
             <div className="col-md-9" />
             <div className="col-md-3">
-              <Search name={this.state.name} onSubmit={this.getSummoner} />
+              <Search onSubmit={this.getSummoner} />
             </div>
+            {this.state.error.length ? (
+              <div>
+                <h3>{this.state.error}</h3>
+              </div>
+            ) : (
+              ""
+            )}
           </div>
         </div>
         <Header />
-        <div>
-          <div className="container">
-            <div className="row">
-              <div className="col-lg-3" />
-              <div className="col-lg-3">
-                <img
-                  className="rounded-circle img-thumbnail summ-thumbnail float-right"
-                  src={summImage}
-                  alt=""
-                />
-              </div>
-              <div className="col-lg-3">
-                <h3>{this.state.name}</h3>
-                <p>Level {this.state.summonerLevel}</p>
-              </div>
-              <div className="col-lg-3" />
-            </div>
-          </div>
-        </div>
+        <Summoner summoner={this.state.summoner} />
         <hr />
 
-        {/* {this.state.matches.length ? ( */}
-        <MatchLog accountID={this.state.accountID} />
-        {/* ) : (
+        {this.state.matches.length ? (
+          <MatchLog matches={this.state.matches} />
+        ) : (
           <img src={require("./img/lol.jpg")} />
-        )} */}
+        )}
       </div>
     );
   }
