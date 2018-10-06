@@ -18,9 +18,6 @@ class App extends Component {
       summonerLevel: ""
     };
   }
-  componentDidMount() {
-    this.getSummoner("riotschmick");
-  }
   // TODO: error message function
 
   // onGetSummoner(summName) {
@@ -64,27 +61,29 @@ class App extends Component {
           </div>
         </div>
         <Header />
-        <div>
-          <div className="container">
-            <div className="row">
-              <div className="col-lg-3" />
-              <div className="col-lg-3">
-                <img
-                  className="rounded-circle img-thumbnail summ-thumbnail float-right"
-                  src={summImage}
-                  alt="summoner profile pic"
-                />
+        {this.state.summonerQueried ? (
+          <div>
+            <div className="container">
+              <div className="row">
+                <div className="col-lg-3" />
+                <div className="col-lg-3">
+                  <img
+                    className="rounded-circle img-thumbnail summ-thumbnail float-right"
+                    src={summImage}
+                    alt="summoner profile pic"
+                  />
+                </div>
+                <div className="col-lg-3">
+                  <h3>{this.state.name}</h3>
+                  <p>Placeholder info</p>
+                  <p>Placeholder info 2</p>
+                </div>
+                <div className="col-lg-3" />
               </div>
-              <div className="col-lg-3">
-                <h3>The name here:</h3>
-                <h3>{this.state.name}</h3>
-                <p>Placeholder info</p>
-                <p>Placeholder info 2</p>
-              </div>
-              <div className="col-lg-3" />
             </div>
           </div>
-        </div>
+        ) : null}
+
         <hr />
 
         {this.state.matches.length ? (

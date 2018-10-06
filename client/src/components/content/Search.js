@@ -2,8 +2,8 @@ import React, { Component } from "react";
 import PropTypes from "prop-types";
 
 class Search extends Component {
-  constructor(props) {
-    super(props);
+  constructor() {
+    super();
 
     this.state = {
       name: ""
@@ -12,6 +12,9 @@ class Search extends Component {
     this.onSubmit = this.onSubmit.bind(this);
     this.onSummNameChange = this.onSummNameChange.bind(this);
   }
+  onSummNameChange(e) {
+    this.setState({ name: e.target.value });
+  }
 
   onSubmit(e) {
     e.preventDefault();
@@ -19,10 +22,6 @@ class Search extends Component {
     this.setState({
       name: ""
     });
-  }
-
-  onSummNameChange(e) {
-    this.setState({ name: e.target.value });
   }
 
   render() {
@@ -44,6 +43,11 @@ class Search extends Component {
 Search.propTypes = {
   name: PropTypes.string,
   onSubmit: PropTypes.func
+};
+
+Search.defaultProps = {
+  name: "",
+  onSubmit: () => {}
 };
 
 export default Search;
