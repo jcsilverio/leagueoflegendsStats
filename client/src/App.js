@@ -36,7 +36,7 @@ class App extends Component {
         })
         .then(res => {
           axios
-            .get(`/api/matches/${self.state.summoner.accountId}`)
+            .get(`/api/matches/log/${self.state.summoner.accountId}`)
             .then(res => {
               self.setState({ matches: res.data.matches });
             })

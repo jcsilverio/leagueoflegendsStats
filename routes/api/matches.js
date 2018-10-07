@@ -14,7 +14,7 @@ const MATCHLOG_URL = "/lol/match/v3/matchlists/by-account/";
 // @access  Public
 
 // GET account match listing
-router.get("/:accountID", function(req, res, next) {
+router.get("/log/:accountID", function(req, res, next) {
   var ID_toSearch = req.params.accountID;
   var URL = HTTPS_ROOT + MATCHLOG_URL + ID_toSearch + "?api_key=" + API_KEY;
   axios
@@ -32,8 +32,8 @@ router.get("/:accountID", function(req, res, next) {
 // @desc    individual matches route
 // @access  Public
 
-// GET account match listing
-router.get("/:matchID", function(req, res, next) {
+// GET account match detail listing
+router.get("/detail/:matchID", function(req, res, next) {
   var matchID_toSearch = req.params.matchID;
   var URL = HTTPS_ROOT + MATCH_URL + matchID_toSearch + "?api_key=" + API_KEY;
   axios
@@ -49,4 +49,5 @@ router.get("/:matchID", function(req, res, next) {
     });
 });
 
-module.exports = router;
+//https://na1.api.riotgames.com/lol/match/v3/matches/2830296170?api_key=RGAPI-291f5d58-37f4-4140-a68f-05271d084f12
+https: module.exports = router;
