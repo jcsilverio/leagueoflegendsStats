@@ -39,7 +39,7 @@ class App extends Component {
           axios
             .get(`/api/matches/log/${this.state.summoner.accountId}`)
             .then(res => {
-              this.setState({ matches: res.data.matches });
+              this.setState({ matches: res.data.matches.slice(0, 5) });
             })
             .then(res => {
               this.state.matches.map((match, index) => {
@@ -47,7 +47,7 @@ class App extends Component {
                   .get(`/api/matches/detail/` + match.gameId)
                   .then(res => {
                     this.setState({
-                      matchDetail: [...this.state.matchDetail, res]
+                      matchDetail: [...this.state.matchDetail, res.data]
                     });
                     // this.setState({ matchDetail: res.data });
                     // console.log("<-------matchDetail", this.state.matchDetail);
@@ -58,6 +58,11 @@ class App extends Component {
               this.setState({
                 renderMatches: true
               });
+              console.log("MATCHES------------------->", this.state.matches);
+              console.log(
+                "MATCH DETAIL------------------->",
+                this.state.matchDetail
+              );
             })
             .catch(error => {
               this.setState({
@@ -87,7 +92,7 @@ class App extends Component {
             <div className="col-md-3">
               <Search onSubmit={this.getSummoner} />
             </div>
-            {this.state.error.length ? (
+            {this.state.error ? (
               <div>
                 <h3>{this.state.error}</h3>
               </div>

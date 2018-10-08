@@ -18,11 +18,12 @@ class Match extends Component {
       itemsBought: null
     };
     this.getMatchDetail = this.getMatchDetail.bind(this);
+    console.log("this.props --->", this.props);
   }
 
   componentDidMount() {
-    console.log("this.props.key --->", this.props.match.gameId);
-    this.getMatchDetail(this.props.match.gameId);
+    const match = this.props.mDetail || {};
+    this.getMatchDetail(match.gameId);
   }
 
   getMatchDetail(matchID) {
@@ -52,10 +53,12 @@ class Match extends Component {
               <div className="col-md-2 statHeader">
                 outcome/duration
                 <p className="statResult">
-                  Test:
-                  {this.state.matchDetail
-                    ? this.state.matchDetail.data.gameType
-                    : "matchDetail undefined"}
+                  TBD
+                  {this.props.mDetail.gameType}
+                </p>
+                <p className="statResult">
+                  Date:
+                  {new Date(this.props.mDetail.gameCreation).toLocaleString()}
                 </p>
               </div>
               <div className="col-md-2 statHeader">
@@ -87,6 +90,9 @@ class Match extends Component {
 
 Match.propTypes = {
   match: PropTypes.object.isRequired
+};
+Match.defaultProps = {
+  mDetail: {}
 };
 
 export default Match;
