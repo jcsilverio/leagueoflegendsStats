@@ -1,20 +1,7 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
-import axios from "axios";
 
 class Match extends Component {
-  // gameId: this.props.key,
-  // outcome: null,
-  // duration: null,
-  // victory: null,
-  // kda: null,
-  // creepSum: null,
-  // creepPerMin: null,
-  // championRunes: null,
-  // summonerSpells: null,
-  // summonerRunes: null,
-  // itemsBought: null
-
   constructor(props) {
     super(props);
     this.state = {
@@ -53,15 +40,6 @@ class Match extends Component {
       summonerRunes: null,
       itemsBought: null
     });
-
-    axios
-      .get(`/api/matches/detail/${this.props.match.gameId}`)
-      .then(res => {
-        self.setState({ matchDetail: res });
-      })
-      .catch(error => {
-        self.setState({});
-      });
   }
 
   render() {

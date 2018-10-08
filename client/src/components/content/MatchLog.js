@@ -5,6 +5,7 @@ import Match from "./Match";
 class MatchLog extends Component {
   constructor(props) {
     super(props);
+    console.log("<-----MatchLog props", props); //empty array
   }
   render() {
     return (
@@ -18,8 +19,8 @@ class MatchLog extends Component {
         </div>
 
         <div>
-          {this.props.matchDetail.map((detail, index) => {
-            return <Match key={detail.gameId} detail={detail} />;
+          {this.props.matchDetail.map((mDetail, index) => {
+            return <Match key={mDetail.gameId} mDetail={mDetail} />;
           })}
         </div>
       </div>
@@ -28,7 +29,7 @@ class MatchLog extends Component {
 }
 
 MatchLog.propTypes = {
-  matchDetail: PropTypes.any.isRequired
+  matchDetail: PropTypes.array.isRequired
 };
 
 export default MatchLog;
