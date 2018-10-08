@@ -18,32 +18,16 @@ class App extends Component {
       error: ""
     };
     this.getSummoner = this.getSummoner.bind(this);
-    this.getMatchDetail = this.getMatchDetail.bind(this);
-  }
-
-  getMatchDetail() {
-    //for every match in all matches
-    //run a get request
-    //place details object in array in state.matchDetail
-
-    this.state.matches.map((match, index) => {
-      return axios.get(`/api/matches/detail/` + match.gameId).then(res => {
-        // this.setState({ matchDetail: [...this.state.matchDetail, res] });
-        this.setState({ matchDetail: res.data });
-
-        console.log("<-------matchDetail", this.state.matchDetail);
-      });
-    });
   }
 
   getSummoner(summName) {
     this.setState({
       summoner: null,
       matches: [],
+      matchDetail: [],
+      renderMatches: false,
       error: ""
     });
-
-    // TODO: error message functionality
 
     if (summName.trim().length) {
       axios
@@ -58,7 +42,17 @@ class App extends Component {
               this.setState({ matches: res.data.matches });
             })
             .then(res => {
-              this.getMatchDetail();
+              this.state.matches.map((match, index) => {
+                return axios
+                  .get(`/api/matches/detail/` + match.gameId)
+                  .then(res => {
+                    this.setState({
+                      matchDetail: [...this.state.matchDetail, res]
+                    });
+                    // this.setState({ matchDetail: res.data });
+                    // console.log("<-------matchDetail", this.state.matchDetail);
+                  });
+              });
             })
             .then(res => {
               this.setState({
@@ -106,7 +100,7 @@ class App extends Component {
         <Summoner summoner={this.state.summoner} />
         <hr />
 
-        {this.state.renderMatches ? (
+        {this.state.matchDetail.length ? (
           <MatchLog matchDetails={this.state.matchDetail} />
         ) : (
           <img src={require("./img/stats.jpg")} alt="" />
