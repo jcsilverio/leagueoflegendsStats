@@ -18,8 +18,8 @@ class MatchLog extends Component {
         </div>
 
         <div>
-          {this.props.matchDetail.map((match, index) => {
-            return <Match key={match.gameId} match={match} />;
+          {this.props.matchDetail.map((detail, index) => {
+            return <Match key={detail.gameId} detail={detail} />;
           })}
         </div>
       </div>
@@ -28,7 +28,7 @@ class MatchLog extends Component {
 }
 
 MatchLog.propTypes = {
-  matchDetail: PropTypes.array.isRequired
+  matchDetail: PropTypes.any.isRequired
 };
 
 export default MatchLog;

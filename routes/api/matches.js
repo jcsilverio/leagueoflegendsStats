@@ -21,7 +21,7 @@ router.get("/log/:accountID", function(req, res, next) {
     .get(URL)
     .then(response => {
       console.log("matches.js: log/:accountID fires");
-      console.log(response.data);
+      // console.log(response.data);
       res.send(response.data);
     })
     .catch(error => {

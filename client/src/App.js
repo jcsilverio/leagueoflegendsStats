@@ -6,7 +6,6 @@ import Summoner from "./components/content/Summoner";
 import Search from "./components/content/Search";
 import MatchLog from "./components/content/MatchLog";
 import axios from "axios";
-const rp = require("request-promise");
 
 class App extends Component {
   constructor(props) {
@@ -29,7 +28,10 @@ class App extends Component {
 
     this.state.matches.map((match, index) => {
       return axios.get(`/api/matches/detail/` + match.gameId).then(res => {
-        this.setState({ matchDetail: [...this.state.matchDetail, res.data] });
+        // this.setState({ matchDetail: [...this.state.matchDetail, res] });
+        this.setState({ matchDetail: res.data });
+
+        console.log("<-------matchDetail", this.state.matchDetail);
       });
     });
   }
