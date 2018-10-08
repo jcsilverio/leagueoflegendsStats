@@ -20,11 +20,14 @@ router.get("/log/:accountID", function(req, res, next) {
   axios
     .get(URL)
     .then(response => {
+      console.log("matches.js: log/:accountID fires");
       console.log(response.data);
       res.send(response.data);
     })
     .catch(error => {
-      console.log("/api/matches.js: Error fetching and parsing match log data");
+      console.log(
+        "matches.js: /api/matches.js: Error fetching and parsing match log data"
+      );
     });
 });
 
@@ -39,7 +42,8 @@ router.get("/detail/:matchID", function(req, res, next) {
   axios
     .get(URL)
     .then(response => {
-      console.log(response.data);
+      console.log("matches.js: detail/:matchID fires");
+      // console.log(response.data);
       res.send(response.data);
     })
     .catch(error => {

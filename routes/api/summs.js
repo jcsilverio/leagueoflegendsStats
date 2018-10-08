@@ -18,12 +18,13 @@ router.get("/:summName", function(req, res, next) {
   axios
     .get(URL)
     .then(response => {
-      console.log(response.data);
+      console.log("summs.js: /:summName fires");
+      // console.log(response.data);
       res.send(response.data);
     })
     .catch(error => {
       console.log(
-        "/api/summs: Error fetching and parsing summoner data",
+        "summs.js: /api/summs: Error fetching and parsing summoner data",
         error
       );
     });

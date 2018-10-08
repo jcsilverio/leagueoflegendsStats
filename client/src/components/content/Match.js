@@ -41,7 +41,7 @@ class Match extends Component {
   getMatchDetail(matchID) {
     const self = this;
     self.setState({
-      matchDetail: {},
+      matchDetail: null,
       outcome: null,
       duration: null,
       victory: null,
@@ -75,7 +75,9 @@ class Match extends Component {
                 outcome/duration
                 <p className="statResult">
                   Test:
-                  {this.props.match.gameId}
+                  {this.state.matchDetail
+                    ? this.state.matchDetail.data.gameType
+                    : "matchDetail undefined"}
                 </p>
               </div>
               <div className="col-md-2 statHeader">

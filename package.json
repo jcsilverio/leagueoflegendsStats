@@ -1,7 +1,7 @@
 {
   "name": "leagueoflegends-app",
   "version": "1.0.0",
-  "description": "A technical exercise for Battlefy",
+  "description": "A technical exercise",
   "main": "server.js",
   "scripts": {
     "start": "node server.js",

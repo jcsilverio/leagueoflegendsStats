@@ -6,6 +6,7 @@ import Summoner from "./components/content/Summoner";
 import Search from "./components/content/Search";
 import MatchLog from "./components/content/MatchLog";
 import axios from "axios";
+const rp = require("request-promise");
 
 class App extends Component {
   constructor(props) {
@@ -13,70 +14,74 @@ class App extends Component {
     this.state = {
       summoner: null,
       matches: [],
+      matchDetail: [],
+      renderMatches: false,
       error: ""
     };
     this.getSummoner = this.getSummoner.bind(this);
+    this.getMatchDetail = this.getMatchDetail.bind(this);
   }
 
-  // TODO: error message functionality
+  getMatchDetail() {
+    //for every match in all matches
+    //run a get request
+    //place details object in array in state.matchDetail
+
+    this.state.matches.map((match, index) => {
+      return axios.get(`/api/matches/detail/` + match.gameId).then(res => {
+        this.setState({ matchDetail: [...this.state.matchDetail, res.data] });
+      });
+    });
+  }
 
   getSummoner(summName) {
-    const self = this;
-    self.setState({
+    this.setState({
       summoner: null,
       matches: [],
       error: ""
     });
 
+    // TODO: error message functionality
+
     if (summName.trim().length) {
       axios
         .get(`/api/summs/${summName}`)
         .then(res => {
-          self.setState({ summoner: res.data });
+          this.setState({ summoner: res.data });
         })
         .then(res => {
           axios
-            .get(`/api/matches/log/${self.state.summoner.accountId}`)
+            .get(`/api/matches/log/${this.state.summoner.accountId}`)
             .then(res => {
-              self.setState({ matches: res.data.matches });
+              this.setState({ matches: res.data.matches });
+            })
+            .then(res => {
+              this.getMatchDetail();
+            })
+            .then(res => {
+              this.setState({
+                renderMatches: true
+              });
             })
             .catch(error => {
-              self.setState({
+              this.setState({
                 matches: [],
                 error: `match error:  ${error}`
               });
             });
         })
         .catch(error => {
-          self.setState({
+          this.setState({
             summoner: null,
             error: `summ error: ${error}`
           });
         });
     } else {
-      self.setState({ error: "Enter the name of a summoner" });
+      this.setState({ error: "Enter the name of a summoner" });
     }
-
-    // console.log("Searching for Summoner: " + summName);
-    // fetch(`/api/summs/` + summName)
-    //   .then(res => res.json())
-    //   .then(res =>
-    //     this.setState({
-    //       summonerQueried: true,
-    //       name: res.name,
-    //       id: res.id,
-    //       accountID: res.accountID,
-    //       profileIconId: res.profileIconId,
-    //       summonerLevel: res.summonerLevel
-    //     })
-    //   )
-    //   .catch(err => console.error(err));
   }
 
   render() {
-    const summImage = `http://ddragon.leagueoflegends.com/cdn/8.18.1/img/profileicon/${
-      this.state.profileIconId
-    }.png`;
     return (
       <div className="App">
         <Navbar />
@@ -99,10 +104,10 @@ class App extends Component {
         <Summoner summoner={this.state.summoner} />
         <hr />
 
-        {this.state.matches.length ? (
-          <MatchLog matches={this.state.matches} />
+        {this.state.renderMatches ? (
+          <MatchLog matchDetails={this.state.matchDetail} />
         ) : (
-          <img src={require("./img/lol.jpg")} />
+          <img src={require("./img/stats.jpg")} alt="" />
         )}
       </div>
     );
