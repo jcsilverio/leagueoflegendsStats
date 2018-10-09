@@ -70,49 +70,50 @@ class Match extends Component {
 
                 <div className="row">
                   <div className="col-sm-6 statHeader">
-                    <p className="statHeader scorePM">score per minute</p>
+                    <p className="statHeader scorePM">Score per Minute</p>
                   </div>
 
                   <div className="col-sm-6 statHeader">
-                    <p className="statHeader scorePM">score total</p>
+                    <p className="statHeader scorePM">Total</p>
                   </div>
                 </div>
 
                 <div className="row">
-                  <div className="col-sm-6">
-                    <p className="statResult">
-                      {(
-                        Math.round(
-                          this.props.mDetail.participants[
-                            this.state.ourPlayerIndex
-                          ].timeline.creepsPerMinDeltas[
-                            Object.keys(
-                              this.props.mDetail.participants[
-                                this.state.ourPlayerIndex
-                              ].timeline.creepsPerMinDeltas
-                            )
-                          ] * 10
-                        ) / 10
-                      ).toFixed(1) > 0.1
-                        ? (
-                            Math.round(
-                              this.props.mDetail.participants[
-                                this.state.ourPlayerIndex
-                              ].timeline.creepsPerMinDeltas[
-                                Object.keys(
-                                  this.props.mDetail.participants[
-                                    this.state.ourPlayerIndex
-                                  ].timeline.creepsPerMinDeltas
-                                )
-                              ] * 10
-                            ) / 10
-                          ).toFixed(1)
-                        : "0"}
-                    </p>
+                  <div className="col-sm-6 statResult">
+                    {(
+                      Math.round(
+                        this.props.mDetail.participants[
+                          this.state.ourPlayerIndex
+                        ].timeline.creepsPerMinDeltas[
+                          Object.keys(
+                            this.props.mDetail.participants[
+                              this.state.ourPlayerIndex
+                            ].timeline.creepsPerMinDeltas
+                          )
+                        ] * 10
+                      ) / 10
+                    ).toFixed(1) > 0.1
+                      ? (
+                          Math.round(
+                            this.props.mDetail.participants[
+                              this.state.ourPlayerIndex
+                            ].timeline.creepsPerMinDeltas[
+                              Object.keys(
+                                this.props.mDetail.participants[
+                                  this.state.ourPlayerIndex
+                                ].timeline.creepsPerMinDeltas
+                              )
+                            ] * 10
+                          ) / 10
+                        ).toFixed(1)
+                      : "0"}
                   </div>
 
                   <div className="col-sm-6 statResult">
-                    <p className="statResult">num</p>
+                    {
+                      this.props.mDetail.participants[this.state.ourPlayerIndex]
+                        .stats.kills
+                    }
                   </div>
                 </div>
               </div>
