@@ -1,5 +1,7 @@
 # leagueoflegendsStats
 
+Work in Progress
+
 - npm install
 - cd client
 - npm install
