@@ -1,7 +1,6 @@
 const express = require("express");
 const router = express.Router();
 const axios = require("axios");
-const { Kayn, REGIONS } = require("kayn");
 require("dotenv").config();
 const API_KEY = process.env.API_KEY;
 const HTTPS_ROOT = "https://na1.api.riotgames.com";

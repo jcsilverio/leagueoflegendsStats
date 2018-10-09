@@ -106,7 +106,10 @@ class App extends Component {
         <hr />
 
         {this.state.matchDetail.length ? (
-          <MatchLog matchDetails={this.state.matchDetail} />
+          <MatchLog
+            matchDetails={this.state.matchDetail}
+            ourSummonerId={this.state.summoner}
+          />
         ) : (
           <img src={require("./img/stats.jpg")} alt="" />
         )}

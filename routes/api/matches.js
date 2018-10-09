@@ -1,7 +1,6 @@
 const express = require("express");
 const router = express.Router();
 const axios = require("axios");
-const { Kayn, REGIONS } = require("kayn");
 require("dotenv").config();
 const API_KEY = process.env.API_KEY;
 const HTTPS_ROOT = "https://na1.api.riotgames.com";
@@ -53,5 +52,4 @@ router.get("/detail/:matchID", function(req, res, next) {
     });
 });
 
-//https://na1.api.riotgames.com/lol/match/v3/matches/2830296170?api_key=RGAPI-291f5d58-37f4-4140-a68f-05271d084f12
 https: module.exports = router;

@@ -5,6 +5,7 @@ class Match extends Component {
   constructor(props) {
     super(props);
     this.state = {
+      ourPlayerIndex: null,
       matchDetail: {},
       outcome: null,
       duration: null,
@@ -17,45 +18,41 @@ class Match extends Component {
       summonerRunes: null,
       itemsBought: null
     };
-    this.getMatchDetail = this.getMatchDetail.bind(this);
+    this.getOurPlayerIndex = this.getOurPlayerIndex.bind(this);
     console.log("this.props --->", this.props);
   }
-
-  componentDidMount() {
-    const match = this.props.mDetail || {};
-    this.getMatchDetail(match.gameId);
-  }
-
-  getMatchDetail(matchID) {
-    const self = this;
-    self.setState({
-      matchDetail: null,
-      outcome: null,
-      duration: null,
-      victory: null,
-      kda: null,
-      creepSum: null,
-      creepPerMin: null,
-      championRunes: null,
-      summonerSpells: null,
-      summonerRunes: null,
-      itemsBought: null
+  getOurPlayerIndex() {
+    this.props.mDetail.participantIdentities.map((item, index) => {
+      return item.player.summonerId === this.props.ourSummonerId.id
+        ? (this.state.ourPlayerIndex = index)
+        : null;
     });
+    console.log(
+      "<------------this.state.ourPlayerIndex",
+      this.state.ourPlayerIndex
+    );
   }
 
   render() {
-    console.log("this.state.matchDetail", this.state.matchDetail);
+    this.getOurPlayerIndex();
     return (
       <div>
         <div className="container">
           <div className="container">
             <div className="row">
               <div className="col-md-2 statHeader">
-                outcome/duration
-                <p className="statResult">
-                  TBD
-                  {this.props.mDetail.gameType}
-                </p>
+                outcome:{" "}
+                {this.props.mDetail.participants[this.state.ourPlayerIndex]
+                  .stats.win
+                  ? "Win"
+                  : "Loss"}
+                {/* //set a state called ourplayerindex
+               //search through participantIdentiies
+               //if player.summonerId === summonerId from props (TODO pass in summonerId)
+               //put that participant identities key number in ourplayerindex
+                 //then look through participants at the [ourplayerindex] key
+                  //read out stats.win to get true or false */}
+                <p className="statResult" />
                 <p className="statResult">
                   Date:
                   {new Date(this.props.mDetail.gameCreation).toLocaleString()}
@@ -89,7 +86,8 @@ class Match extends Component {
 }
 
 Match.propTypes = {
-  match: PropTypes.object.isRequired
+  match: PropTypes.object.isRequired,
+  ourSummonerID: PropTypes.any.isRequired
 };
 Match.defaultProps = {
   mDetail: {}

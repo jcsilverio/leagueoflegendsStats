@@ -20,7 +20,13 @@ class MatchLog extends Component {
 
         <div>
           {(this.props.matchDetails || []).map((mDetail, index) => {
-            return <Match key={mDetail.gameId} mDetail={mDetail} />;
+            return (
+              <Match
+                key={mDetail.gameId}
+                mDetail={mDetail}
+                ourSummonerId={this.props.ourSummonerId}
+              />
+            );
           })}
         </div>
       </div>
@@ -29,7 +35,8 @@ class MatchLog extends Component {
 }
 
 MatchLog.propTypes = {
-  matchDetail: PropTypes.array.isRequired
+  matchDetail: PropTypes.array.isRequired,
+  ourSummonerId: PropTypes.any.isRequired
 };
 
 export default MatchLog;
