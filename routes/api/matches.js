@@ -19,7 +19,7 @@ router.get("/log/:accountID", function(req, res, next) {
   axios
     .get(URL)
     .then(response => {
-      console.log("matches.js: log/:accountID fires");
+      // console.log("matches.js: log/:accountID fires");
       // console.log(response.data);
       res.send(response.data);
     })
@@ -41,7 +41,7 @@ router.get("/detail/:matchID", function(req, res, next) {
   axios
     .get(URL)
     .then(response => {
-      console.log("matches.js: detail/:matchID fires");
+      // console.log("matches.js: detail/:matchID fires");
       // console.log(response.data);
       res.send(response.data);
     })
