@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
 var moment = require("moment");
+var creepsPerMinKey;
 
 class Match extends Component {
   constructor(props) {
@@ -64,10 +65,41 @@ class Match extends Component {
               <div className="col-md-2 statHeader">KDA</div>
               <div className="col-md-2 statHeader">
                 <div className="row">
-                  <div className="col-sm-6 statHeader">Creep total</div>
+                  <div className="col-sm-12 statHeader">Creep</div>
+                </div>
+                <div className="row">
                   <div className="col-sm-6 statHeader">
                     Creep{" "}
                     <span className="statHeader scorePM">score per minute</span>
+                    <p className="statResult">
+                      {(
+                        Math.round(
+                          this.props.mDetail.participants[
+                            this.state.ourPlayerIndex
+                          ].timeline.creepsPerMinDeltas[
+                            Object.keys(
+                              this.props.mDetail.participants[
+                                this.state.ourPlayerIndex
+                              ].timeline.creepsPerMinDeltas
+                            )
+                          ] * 10
+                        ) / 10
+                      ).toFixed(1) > 0.1
+                        ? (
+                            Math.round(
+                              this.props.mDetail.participants[
+                                this.state.ourPlayerIndex
+                              ].timeline.creepsPerMinDeltas[
+                                Object.keys(
+                                  this.props.mDetail.participants[
+                                    this.state.ourPlayerIndex
+                                  ].timeline.creepsPerMinDeltas
+                                )
+                              ] * 10
+                            ) / 10
+                          ).toFixed(1)
+                        : "0"}
+                    </p>
                   </div>
                 </div>
               </div>
