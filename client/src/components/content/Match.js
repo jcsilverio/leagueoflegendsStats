@@ -65,12 +65,11 @@ class Match extends Component {
               <div className="col-md-2 statHeader">KDA</div>
               <div className="col-md-2 statHeader">
                 <div className="row">
-                  <div className="col-sm-12 statHeader">Creep</div>
+                  <div className="col-sm-12 statHeader centerText">Creep</div>
                 </div>
                 <div className="row">
                   <div className="col-sm-6 statHeader">
-                    Creep{" "}
-                    <span className="statHeader scorePM">score per minute</span>
+                    <p className="statHeader scorePM">score per minute</p>
                     <p className="statResult">
                       {(
                         Math.round(
@@ -100,6 +99,10 @@ class Match extends Component {
                           ).toFixed(1)
                         : "0"}
                     </p>
+                  </div>
+                  <div className="col-sm-6 statHeader">
+                    <p className="statHeader scorePM">score total</p>
+                    <p className="statResult">num</p>
                   </div>
                 </div>
               </div>
