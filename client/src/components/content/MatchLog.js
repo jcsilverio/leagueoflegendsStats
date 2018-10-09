@@ -19,7 +19,7 @@ class MatchLog extends Component {
         </div>
 
         <div>
-          {(this.props.matchDetails || []).map((mDetail, index) => {
+          {(this.props.matchDetail || []).map((mDetail, index) => {
             return (
               <Match
                 key={mDetail.gameId}

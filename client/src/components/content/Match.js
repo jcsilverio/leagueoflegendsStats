@@ -86,11 +86,8 @@ class Match extends Component {
 }
 
 Match.propTypes = {
-  match: PropTypes.object.isRequired,
-  ourSummonerID: PropTypes.any.isRequired
-};
-Match.defaultProps = {
-  mDetail: {}
+  mDetail: PropTypes.object.isRequired,
+  ourSummonerId: PropTypes.any.isRequired
 };
 
 export default Match;

@@ -107,7 +107,7 @@ class App extends Component {
 
         {this.state.matchDetail.length ? (
           <MatchLog
-            matchDetails={this.state.matchDetail}
+            matchDetail={this.state.matchDetail}
             ourSummonerId={this.state.summoner}
           />
         ) : (
