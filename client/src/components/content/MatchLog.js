@@ -5,7 +5,6 @@ import Match from "./Match";
 class MatchLog extends Component {
   constructor(props) {
     super(props);
-    console.log("<-----MatchLog props", props.data); //empty array
   }
   render() {
     return (

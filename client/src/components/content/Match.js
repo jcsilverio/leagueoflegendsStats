@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
+var moment = require("moment");
 
 class Match extends Component {
   constructor(props) {
@@ -19,7 +20,6 @@ class Match extends Component {
       itemsBought: null
     };
     this.getOurPlayerIndex = this.getOurPlayerIndex.bind(this);
-    console.log("this.props --->", this.props);
   }
   getOurPlayerIndex() {
     this.props.mDetail.participantIdentities.map((item, index) => {
@@ -27,10 +27,6 @@ class Match extends Component {
         ? (this.state.ourPlayerIndex = index)
         : null;
     });
-    console.log(
-      "<------------this.state.ourPlayerIndex",
-      this.state.ourPlayerIndex
-    );
   }
 
   render() {
@@ -41,36 +37,33 @@ class Match extends Component {
           <div className="container">
             <div className="row">
               <div className="col-md-2 statHeader">
-                outcome:{" "}
+                Outcome:{" "}
                 {this.props.mDetail.participants[this.state.ourPlayerIndex]
-                  .stats.win
-                  ? "Win"
-                  : "Loss"}
-                {/* //set a state called ourplayerindex
-               //search through participantIdentiies
-               //if player.summonerId === summonerId from props (TODO pass in summonerId)
-               //put that participant identities key number in ourplayerindex
-                 //then look through participants at the [ourplayerindex] key
-                  //read out stats.win to get true or false */}
+                  .stats.win ? (
+                  <span className="win">Win</span>
+                ) : (
+                  <span className="loss">Loss</span>
+                )}
                 <p className="statResult" />
-                <p className="statResult">
-                  Date:
-                  {new Date(this.props.mDetail.gameCreation).toLocaleString()}
+                <p className="statResult date">
+                  {moment(new Date(this.props.mDetail.gameCreation)).format(
+                    "MMM Do YYYY"
+                  )}
                 </p>
               </div>
               <div className="col-md-2 statHeader">
-                champion icon/champion name
+                Champion Icon/Champion Name
               </div>
-              <div className="col-md-2 statHeader">champion runes</div>
-              <div className="col-md-2 statHeader">summoner spells</div>
-              <div className="col-md-2 statHeader">summoner runes</div>
-              <div className="col-md-2 statHeader">items bought</div>
+              <div className="col-md-2 statHeader">Champion runes</div>
+              <div className="col-md-2 statHeader">Summoner spells</div>
+              <div className="col-md-2 statHeader">Summoner runes</div>
+              <div className="col-md-2 statHeader">Items bought</div>
             </div>
 
             <div className="row">
-              <div className="col-md-2 statHeader">victory/kda</div>
+              <div className="col-md-2 statHeader">KDA</div>
               <div className="col-md-2 statHeader">
-                creep total/creep score per minute
+                Creep total/Creep score per minute
               </div>
               <div className="col-md-2" />
               <div className="col-md-2" />

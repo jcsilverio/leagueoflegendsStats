@@ -39,7 +39,7 @@ class App extends Component {
           axios
             .get(`/api/matches/log/${this.state.summoner.accountId}`)
             .then(res => {
-              this.setState({ matches: res.data.matches.slice(0, 5) });
+              this.setState({ matches: res.data.matches.slice(0, 10) });
             })
             .then(res => {
               this.state.matches.map((match, index) => {
@@ -49,8 +49,6 @@ class App extends Component {
                     this.setState({
                       matchDetail: [...this.state.matchDetail, res.data]
                     });
-                    // this.setState({ matchDetail: res.data });
-                    // console.log("<-------matchDetail", this.state.matchDetail);
                   });
               });
             })
@@ -58,11 +56,6 @@ class App extends Component {
               this.setState({
                 renderMatches: true
               });
-              console.log("MATCHES------------------->", this.state.matches);
-              console.log(
-                "MATCH DETAIL------------------->",
-                this.state.matchDetail
-              );
             })
             .catch(error => {
               this.setState({
@@ -111,7 +104,7 @@ class App extends Component {
             ourSummonerId={this.state.summoner}
           />
         ) : (
-          <img src={require("./img/stats.jpg")} alt="" />
+          <img src={require("./img/lol.jpg")} alt="" />
         )}
       </div>
     );
