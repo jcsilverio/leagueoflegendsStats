@@ -39,7 +39,7 @@ class App extends Component {
           axios
             .get(`/api/matches/log/${this.state.summoner.accountId}`)
             .then(res => {
-              this.setState({ matches: res.data.matches });
+              this.setState({ matches: res.data.matches.slice(0, 15) });
             })
             .then(res => {
               this.state.matches.map((match, index) => {

@@ -63,7 +63,13 @@ class Match extends Component {
             <div className="row">
               <div className="col-md-2 statHeader">KDA</div>
               <div className="col-md-2 statHeader">
-                Creep total/Creep score per minute
+                <div className="row">
+                  <div className="col-sm-6 statHeader">Creep total</div>
+                  <div className="col-sm-6 statHeader">
+                    Creep{" "}
+                    <span className="statHeader scorePM">score per minute</span>
+                  </div>
+                </div>
               </div>
               <div className="col-md-2" />
               <div className="col-md-2" />
