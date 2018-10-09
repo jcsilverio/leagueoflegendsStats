@@ -67,9 +67,19 @@ class Match extends Component {
                 <div className="row">
                   <div className="col-sm-12 statHeader centerText">Creep</div>
                 </div>
+
                 <div className="row">
                   <div className="col-sm-6 statHeader">
                     <p className="statHeader scorePM">score per minute</p>
+                  </div>
+
+                  <div className="col-sm-6 statHeader">
+                    <p className="statHeader scorePM">score total</p>
+                  </div>
+                </div>
+
+                <div className="row">
+                  <div className="col-sm-6">
                     <p className="statResult">
                       {(
                         Math.round(
@@ -100,8 +110,8 @@ class Match extends Component {
                         : "0"}
                     </p>
                   </div>
-                  <div className="col-sm-6 statHeader">
-                    <p className="statHeader scorePM">score total</p>
+
+                  <div className="col-sm-6 statResult">
                     <p className="statResult">num</p>
                   </div>
                 </div>
