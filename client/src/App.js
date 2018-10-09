@@ -11,6 +11,7 @@ class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
+      spinner: false,
       summoner: null,
       matches: [],
       matchDetail: [],
@@ -22,6 +23,7 @@ class App extends Component {
 
   getSummoner(summName) {
     this.setState({
+      spinner: true,
       summoner: null,
       matches: [],
       matchDetail: [],
@@ -47,7 +49,8 @@ class App extends Component {
                   .get(`/api/matches/detail/` + match.gameId)
                   .then(res => {
                     this.setState({
-                      matchDetail: [...this.state.matchDetail, res.data]
+                      matchDetail: [...this.state.matchDetail, res.data],
+                      spinner: false
                     });
                   });
               });
@@ -84,6 +87,9 @@ class App extends Component {
             <div className="col-md-9" />
             <div className="col-md-3">
               <Search onSubmit={this.getSummoner} />
+              {this.state.spinner ? (
+                <img src={require("./img/spinner.gif")} alt="" />
+              ) : null}
             </div>
             {this.state.error ? (
               <div>

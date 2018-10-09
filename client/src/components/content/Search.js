@@ -24,16 +24,18 @@ class Search extends Component {
 
   render() {
     return (
-      <form className="Search" onSubmit={this.onSubmit}>
-        <input
-          type="text"
-          placeholder="Summoner Name..."
-          autoComplete="off"
-          value={this.state.summonerName}
-          onChange={this.onSummChange}
-        />
-        <input type="submit" value="Search" />
-      </form>
+      <div>
+        <form className="Search" onSubmit={this.onSubmit}>
+          <input
+            type="text"
+            placeholder="Summoner Name..."
+            autoComplete="off"
+            value={this.state.summonerName}
+            onChange={this.onSummChange}
+          />
+          <input type="submit" value="Search" />
+        </form>
+      </div>
     );
   }
 }
