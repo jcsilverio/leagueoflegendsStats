@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
 var moment = require("moment");
-var creepsPerMinKey;
 
 class Match extends Component {
   constructor(props) {
@@ -32,6 +31,7 @@ class Match extends Component {
 
   render() {
     this.getOurPlayerIndex();
+    const details = this.props.mDetail.participants[this.state.ourPlayerIndex];
     return (
       <div>
         <div className="container">
@@ -39,8 +39,7 @@ class Match extends Component {
             <div className="row">
               <div className="col-md-2 statHeader">
                 Outcome:{" "}
-                {this.props.mDetail.participants[this.state.ourPlayerIndex]
-                  .stats.win ? (
+                {details.stats.win ? (
                   <span className="win">Win</span>
                 ) : (
                   <span className="loss">Loss</span>
@@ -81,39 +80,14 @@ class Match extends Component {
                 <div className="row">
                   <div className="col-sm-6 statResult">
                     {(
-                      Math.round(
-                        this.props.mDetail.participants[
-                          this.state.ourPlayerIndex
-                        ].timeline.creepsPerMinDeltas[
-                          Object.keys(
-                            this.props.mDetail.participants[
-                              this.state.ourPlayerIndex
-                            ].timeline.creepsPerMinDeltas
-                          )
-                        ] * 10
-                      ) / 10
-                    ).toFixed(1) > 0.1
-                      ? (
-                          Math.round(
-                            this.props.mDetail.participants[
-                              this.state.ourPlayerIndex
-                            ].timeline.creepsPerMinDeltas[
-                              Object.keys(
-                                this.props.mDetail.participants[
-                                  this.state.ourPlayerIndex
-                                ].timeline.creepsPerMinDeltas
-                              )
-                            ] * 10
-                          ) / 10
-                        ).toFixed(1)
-                      : "0"}
+                      (details.stats.totalMinionsKilled /
+                        this.props.mDetail.gameDuration) *
+                      60
+                    ).toFixed(2)}
                   </div>
 
                   <div className="col-sm-6 statResult">
-                    {
-                      this.props.mDetail.participants[this.state.ourPlayerIndex]
-                        .stats.kills
-                    }
+                    {details.stats.totalMinionsKilled}
                   </div>
                 </div>
               </div>
