@@ -47,6 +47,7 @@ class MatchLog extends Component {
   }
 
   render() {
+    console.log("this.state.champions", this.state.champions);
     return (
       <div className="MatchLog">
         <div className="row">
@@ -58,16 +59,19 @@ class MatchLog extends Component {
         </div>
 
         <div>
-          {(this.props.matchDetail || []).map((mDetail, index) => {
-            return (
-              <Match
-                key={mDetail.gameId}
-                mDetail={mDetail}
-                ourSummonerId={this.props.ourSummonerId}
-                runes={this.state.runes}
-              />
-            );
-          })}
+          {this.state.champions
+            ? (this.props.matchDetail || []).map((mDetail, index) => {
+                return (
+                  <Match
+                    key={mDetail.gameId}
+                    mDetail={mDetail}
+                    ourSummonerId={this.props.ourSummonerId}
+                    runes={this.state.runes}
+                    champions={this.state.champions}
+                  />
+                );
+              })
+            : null}
         </div>
       </div>
     );

@@ -2,17 +2,31 @@ import React, { Component } from "react";
 import PropTypes from "prop-types";
 var moment = require("moment");
 const runeUrl = "https://ddragon.leagueoflegends.com/cdn/img/";
+var details = null;
 
 class Match extends Component {
   constructor(props) {
     super(props);
     this.state = {
       ourPlayerIndex: null,
-      matchDetail: {}
+      matchDetail: {},
+      championId: null
     };
     this.getOurPlayerIndex = this.getOurPlayerIndex.bind(this);
     this.getRunes = this.getRunes.bind(this);
     this.getRuneAltText = this.getRuneAltText.bind(this);
+    this.getChampion = this.getChampion.bind(this);
+  }
+
+  componentWillMount() {
+    this.getOurPlayerIndex();
+  }
+
+  componentDidMount() {
+    this.getChampion(
+      this.props.champions,
+      this.props.mDetail.participants[this.state.ourPlayerIndex].championId
+    );
   }
   getOurPlayerIndex() {
     this.props.mDetail.participantIdentities.map((item, index) => {
@@ -40,9 +54,22 @@ class Match extends Component {
     }
   }
 
+  getChampion(champions, id) {
+    if (champions) {
+      for (let key in champions) {
+        if (Number(champions[key].key) === id) {
+          this.setState({ championId: champions[key] });
+          console.log("Champions[key] ---- >", champions[key]);
+          console.log("ChampionsId ---- >", this.state.championsId);
+        }
+      }
+    } else {
+      return null;
+    }
+  }
+
   render() {
-    this.getOurPlayerIndex();
-    const details = this.props.mDetail.participants[this.state.ourPlayerIndex];
+    var details = this.props.mDetail.participants[this.state.ourPlayerIndex];
     return (
       <div>
         <div className="container">
@@ -64,6 +91,9 @@ class Match extends Component {
               </div>
               <div className="col-md-2 statHeader">
                 Champion Icon/Champion Name
+                <p>
+                  {this.state.championId ? this.state.championId.name : null}
+                </p>
               </div>
               <div className="col-md-2 statHeader">
                 Champion runes
@@ -159,7 +189,8 @@ class Match extends Component {
 
 Match.propTypes = {
   mDetail: PropTypes.object.isRequired,
-  ourSummonerId: PropTypes.any.isRequired
+  ourSummonerId: PropTypes.any.isRequired,
+  champions: PropTypes.any.isRequired
 };
 
 export default Match;
