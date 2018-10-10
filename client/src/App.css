@@ -82,3 +82,7 @@ img {
   text-align: left;
   color: rgba(0, 88, 130, 1);
 }
+
+.itemSize {
+  width: 20%;
+}

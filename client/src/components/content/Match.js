@@ -12,7 +12,8 @@ class Match extends Component {
       matchDetail: {},
       championId: null,
       summonerSpell_01: null,
-      summonerSpell_02: null
+      summonerSpell_02: null,
+      itemsBoughtResult: null
     };
     this.getOurPlayerIndex = this.getOurPlayerIndex.bind(this);
     this.getRunes = this.getRunes.bind(this);
@@ -20,6 +21,7 @@ class Match extends Component {
     this.getChampion = this.getChampion.bind(this);
     this.getSpell1 = this.getSpell1.bind(this);
     this.getSpell2 = this.getSpell2.bind(this);
+    this.showItemsBought = this.showItemsBought.bind(this);
   }
 
   componentWillMount() {
@@ -61,15 +63,8 @@ class Match extends Component {
   }
 
   getSpell1(summonerSpells, id) {
-    console.log("GETSPELL1 FIRES");
-    console.log("THIS.PROPS.SUMMONERSPELLS", summonerSpells);
     if (summonerSpells) {
       for (let key in summonerSpells) {
-        console.log(
-          "Number(summonerSpells[key].key: ",
-          Number(summonerSpells[key].key)
-        );
-        console.log("id:", id);
         if (Number(summonerSpells[key].key) === id) {
           this.setState({ summonerSpell_01: summonerSpells[key] });
         }
@@ -104,13 +99,20 @@ class Match extends Component {
       for (let key in champions) {
         if (Number(champions[key].key) === id) {
           this.setState({ championId: champions[key] });
-          // console.log("Champions[key] ---- >", champions[key]);
-          // console.log("ChampionsId ---- >", this.state.championsId);
         }
       }
     } else {
       return null;
     }
+  }
+
+  showItemsBought(items, dragonUrl) {
+    console.log("ITEMS: ", items);
+    return items.map((item, index) => {
+      this.setState({
+        itemsBoughtResult: `<img key={${index} width="40" height="40" src="{${dragonUrl}img/item/${item}.png"}/>`
+      });
+    });
   }
 
   render() {
@@ -201,7 +203,40 @@ class Match extends Component {
                 </div>
               </div>
 
-              <div className="col-md-4 statHeader">Items bought</div>
+              <div className="col-md-4 statHeader">
+                Items bought
+                <div>
+                  <img
+                    className="rounded-circle img-thumbnail itemSize"
+                    src={`${dDragonUrl}img/item/${details.stats.item0}.png`}
+                  />
+                  <img
+                    className="rounded-circle img-thumbnail itemSize"
+                    src={`${dDragonUrl}img/item/${details.stats.item1}.png`}
+                  />
+                  <img
+                    className="rounded-circle img-thumbnail itemSize"
+                    src={`${dDragonUrl}img/item/${details.stats.item2}.png`}
+                  />
+
+                  <img
+                    className="rounded-circle img-thumbnail itemSize"
+                    src={`${dDragonUrl}img/item/${details.stats.item3}.png`}
+                  />
+                  <img
+                    className="rounded-circle img-thumbnail itemSize"
+                    src={`${dDragonUrl}img/item/${details.stats.item4}.png`}
+                  />
+                  <img
+                    className="rounded-circle img-thumbnail itemSize"
+                    src={`${dDragonUrl}img/item/${details.stats.item5}.png`}
+                  />
+                  <img
+                    className="rounded-circle img-thumbnail itemSize"
+                    src={`${dDragonUrl}img/item/${details.stats.item6}.png`}
+                  />
+                </div>
+              </div>
             </div>
 
             <div className="row">
