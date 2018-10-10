@@ -12,6 +12,7 @@ class Match extends Component {
     };
     this.getOurPlayerIndex = this.getOurPlayerIndex.bind(this);
     this.getRunes = this.getRunes.bind(this);
+    this.getRuneAltText = this.getRuneAltText.bind(this);
   }
   getOurPlayerIndex() {
     this.props.mDetail.participantIdentities.map((item, index) => {
@@ -25,6 +26,15 @@ class Match extends Component {
     if (runes) {
       const rune = runes.find(r => r.id === id);
       return `${runeUrl}${rune && rune.icon}`;
+    } else {
+      return "";
+    }
+  }
+
+  getRuneAltText(runes, id) {
+    if (runes) {
+      const rune = runes.find(r => r.id === id);
+      return `${rune.name}`;
     } else {
       return "";
     }
@@ -64,7 +74,21 @@ class Match extends Component {
                     this.props.runes,
                     details.stats.perkPrimaryStyle
                   )}
-                  alt=""
+                  alt={`${this.getRuneAltText(
+                    this.props.runes,
+                    details.stats.perkPrimaryStyle
+                  )}`}
+                />
+                <img
+                  className="runeSize"
+                  src={this.getRunes(
+                    this.props.runes,
+                    details.stats.perkSubStyle
+                  )}
+                  alt={`${this.getRuneAltText(
+                    this.props.runes,
+                    details.stats.perkSubStyle
+                  )}`}
                 />
               </div>
               <div className="col-md-2 statHeader">Summoner spells</div>
