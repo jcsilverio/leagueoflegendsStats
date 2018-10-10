@@ -1,6 +1,6 @@
 # leagueoflegendsStats
 
-Work in Progress
+https://loljs.herokuapp.com/
 
 - npm install
 - cd client
