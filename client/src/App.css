@@ -75,3 +75,10 @@ img {
   width: 15%;
   height: 30%;
 }
+
+.champName {
+  font-size: 20px;
+  font-style: italic;
+  text-align: left;
+  color: rgba(0, 88, 130, 1);
+}

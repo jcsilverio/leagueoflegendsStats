@@ -47,7 +47,7 @@ class MatchLog extends Component {
   }
 
   render() {
-    console.log("this.state.champions", this.state.champions);
+    // console.log("this.state.champions", this.state.champions);
     return (
       <div className="MatchLog">
         <div className="row">

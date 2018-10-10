@@ -59,8 +59,8 @@ class Match extends Component {
       for (let key in champions) {
         if (Number(champions[key].key) === id) {
           this.setState({ championId: champions[key] });
-          console.log("Champions[key] ---- >", champions[key]);
-          console.log("ChampionsId ---- >", this.state.championsId);
+          // console.log("Champions[key] ---- >", champions[key]);
+          // console.log("ChampionsId ---- >", this.state.championsId);
         }
       }
     } else {
@@ -89,11 +89,8 @@ class Match extends Component {
                   )}
                 </p>
               </div>
-              <div className="col-md-2 statHeader">
-                Champion Icon/Champion Name
-                <p>
-                  {this.state.championId ? this.state.championId.name : null}
-                </p>
+              <div className="col-md-2 champName">
+                {this.state.championId ? this.state.championId.name : null}
               </div>
               <div className="col-md-2 statHeader">
                 Champion runes
