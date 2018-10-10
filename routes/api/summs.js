@@ -5,6 +5,7 @@ require("dotenv").config();
 const API_KEY = process.env.API_KEY;
 const HTTPS_ROOT = "https://na1.api.riotgames.com";
 const SUMM_URL = "/lol/summoner/v3/summoners/by-name/";
+const DRAG_URL = "https://ddragon.leagueoflegends.com/cdn/8.19.1/";
 
 // @route   GET api/:summName
 // @desc    summoner route
