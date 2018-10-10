@@ -147,7 +147,7 @@ class Match extends Component {
                 Runes
                 <br />
                 <img
-                  className="runeSize"
+                  className="imageSize"
                   src={this.getRunes(
                     this.props.runes,
                     details.stats.perkPrimaryStyle
@@ -158,7 +158,7 @@ class Match extends Component {
                   )}`}
                 />
                 <img
-                  className="runeSize"
+                  className="imageSize"
                   src={this.getRunes(
                     this.props.runes,
                     details.stats.perkSubStyle
@@ -169,7 +169,7 @@ class Match extends Component {
                   )}`}
                 />
               </div>
-              <div className="col-md-2 statHeader">
+              <div className="col-md-2 statHeader imageSize">
                 Summoner spells
                 <div className="row">
                   <div className="col-sm-6">
@@ -183,7 +183,6 @@ class Match extends Component {
                           : null
                       }
                       alt=""
-                      height="50"
                     />
                   </div>
                   <div className="col-sm-6">
@@ -197,7 +196,6 @@ class Match extends Component {
                           : null
                       }
                       alt=""
-                      height="50"
                     />
                   </div>
                 </div>
@@ -206,35 +204,54 @@ class Match extends Component {
               <div className="col-md-4 statHeader">
                 Items bought
                 <div>
-                  <img
-                    className="rounded-circle img-thumbnail itemSize"
-                    src={`${dDragonUrl}img/item/${details.stats.item0}.png`}
-                  />
-                  <img
-                    className="rounded-circle img-thumbnail itemSize"
-                    src={`${dDragonUrl}img/item/${details.stats.item1}.png`}
-                  />
-                  <img
-                    className="rounded-circle img-thumbnail itemSize"
-                    src={`${dDragonUrl}img/item/${details.stats.item2}.png`}
-                  />
+                  {details.stats.item0 === 0 ? null : (
+                    <img
+                      className="rounded-circle img-thumbnail imageSize"
+                      src={`${dDragonUrl}img/item/${details.stats.item0}.png`}
+                    />
+                  )}
 
-                  <img
-                    className="rounded-circle img-thumbnail itemSize"
-                    src={`${dDragonUrl}img/item/${details.stats.item3}.png`}
-                  />
-                  <img
-                    className="rounded-circle img-thumbnail itemSize"
-                    src={`${dDragonUrl}img/item/${details.stats.item4}.png`}
-                  />
-                  <img
-                    className="rounded-circle img-thumbnail itemSize"
-                    src={`${dDragonUrl}img/item/${details.stats.item5}.png`}
-                  />
-                  <img
-                    className="rounded-circle img-thumbnail itemSize"
-                    src={`${dDragonUrl}img/item/${details.stats.item6}.png`}
-                  />
+                  {details.stats.item1 === 0 ? null : (
+                    <img
+                      className="rounded-circle img-thumbnail imageSize"
+                      src={`${dDragonUrl}img/item/${details.stats.item1}.png`}
+                    />
+                  )}
+
+                  {details.stats.item2 === 0 ? null : (
+                    <img
+                      className="rounded-circle img-thumbnail imageSize"
+                      src={`${dDragonUrl}img/item/${details.stats.item2}.png`}
+                    />
+                  )}
+
+                  {details.stats.item3 === 0 ? null : (
+                    <img
+                      className="rounded-circle img-thumbnail imageSize"
+                      src={`${dDragonUrl}img/item/${details.stats.item3}.png`}
+                    />
+                  )}
+
+                  {details.stats.item4 === 0 ? null : (
+                    <img
+                      className="rounded-circle img-thumbnail imageSize"
+                      src={`${dDragonUrl}img/item/${details.stats.item4}.png`}
+                    />
+                  )}
+
+                  {details.stats.item5 === 0 ? null : (
+                    <img
+                      className="rounded-circle img-thumbnail imageSize"
+                      src={`${dDragonUrl}img/item/${details.stats.item5}.png`}
+                    />
+                  )}
+
+                  {details.stats.item06 === 0 ? null : (
+                    <img
+                      className="rounded-circle img-thumbnail imageSize"
+                      src={`${dDragonUrl}img/item/${details.stats.item6}.png`}
+                    />
+                  )}
                 </div>
               </div>
             </div>
