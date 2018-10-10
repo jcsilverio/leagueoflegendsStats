@@ -70,3 +70,8 @@ img {
 .red {
   color: red;
 }
+
+.runeSize {
+  width: 15%;
+  height: 30%;
+}

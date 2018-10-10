@@ -1,25 +1,17 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
 var moment = require("moment");
+const runeUrl = "https://ddragon.leagueoflegends.com/cdn/img/";
 
 class Match extends Component {
   constructor(props) {
     super(props);
     this.state = {
       ourPlayerIndex: null,
-      matchDetail: {},
-      outcome: null,
-      duration: null,
-      victory: null,
-      kda: null,
-      creepSum: null,
-      creepPerMin: null,
-      championRunes: null,
-      summonerSpells: null,
-      summonerRunes: null,
-      itemsBought: null
+      matchDetail: {}
     };
     this.getOurPlayerIndex = this.getOurPlayerIndex.bind(this);
+    this.getRunes = this.getRunes.bind(this);
   }
   getOurPlayerIndex() {
     this.props.mDetail.participantIdentities.map((item, index) => {
@@ -27,6 +19,15 @@ class Match extends Component {
         ? (this.state.ourPlayerIndex = index)
         : null;
     });
+  }
+
+  getRunes(runes, id) {
+    if (runes) {
+      const rune = runes.find(r => r.id === id);
+      return `${runeUrl}${rune && rune.icon}`;
+    } else {
+      return "";
+    }
   }
 
   render() {
@@ -54,7 +55,18 @@ class Match extends Component {
               <div className="col-md-2 statHeader">
                 Champion Icon/Champion Name
               </div>
-              <div className="col-md-2 statHeader">Champion runes</div>
+              <div className="col-md-2 statHeader">
+                Champion runes
+                <br />
+                <img
+                  className="runeSize"
+                  src={this.getRunes(
+                    this.props.runes,
+                    details.stats.perkPrimaryStyle
+                  )}
+                  alt=""
+                />
+              </div>
               <div className="col-md-2 statHeader">Summoner spells</div>
               <div className="col-md-2 statHeader">Summoner runes</div>
               <div className="col-md-2 statHeader">Items bought</div>

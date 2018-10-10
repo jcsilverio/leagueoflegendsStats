@@ -64,6 +64,7 @@ class MatchLog extends Component {
                 key={mDetail.gameId}
                 mDetail={mDetail}
                 ourSummonerId={this.props.ourSummonerId}
+                runes={this.state.runes}
               />
             );
           })}
