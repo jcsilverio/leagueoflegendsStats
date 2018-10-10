@@ -139,7 +139,7 @@ class Match extends Component {
                   {this.state.championId ? this.state.championId.name : null}
                 </span>
                 <br />
-                <span> </span>
+                <span>Level: {details.stats.champLevel}</span>
               </div>
               <div className="col-md-2 statHeader">
                 Runes
