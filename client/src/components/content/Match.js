@@ -68,6 +68,15 @@ class Match extends Component {
                   <span className="red">{details.stats.deaths}</span> /{" "}
                   {details.stats.assists}
                 </p>
+                <div className="statHeader">
+                  Game Length
+                  <p className="statResult">
+                    {moment("2015-01-01")
+                      .startOf("day")
+                      .seconds(this.props.mDetail.gameDuration)
+                      .format("H:mm:ss")}
+                  </p>
+                </div>
               </div>
 
               <div className="col-md-2 statHeader">
