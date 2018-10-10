@@ -225,7 +225,10 @@ class Match extends Component {
 
               <div className="col-md-2 statHeader">
                 <div className="row">
-                  <div className="col-sm-12 statHeader centerText">Creep</div>
+                  <div className="col-sm-12 statHeader">
+                    Creep
+                    <hr />
+                  </div>
                 </div>
 
                 <div className="row">
