@@ -4,7 +4,6 @@ const axios = require("axios");
 require("dotenv").config();
 const API_KEY = process.env.API_KEY;
 const HTTPS_ROOT = "https://na1.api.riotgames.com";
-
 const MATCH_URL = "/lol/match/v3/matches/";
 const MATCHLOG_URL = "/lol/match/v3/matchlists/by-account/";
 
@@ -31,7 +30,7 @@ router.get("/log/:accountID", function(req, res, next) {
 });
 
 // @route   GET api/maches/:matchID
-// @desc    individual matches route
+// @desc    individual match detail route
 // @access  Public
 
 // GET account match detail listing

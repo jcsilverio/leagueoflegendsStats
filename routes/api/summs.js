@@ -5,7 +5,6 @@ require("dotenv").config();
 const API_KEY = process.env.API_KEY;
 const HTTPS_ROOT = "https://na1.api.riotgames.com";
 const SUMM_URL = "/lol/summoner/v3/summoners/by-name/";
-const DRAG_URL = "https://ddragon.leagueoflegends.com/cdn/8.19.1/";
 
 // @route   GET api/:summName
 // @desc    summoner route
@@ -18,8 +17,6 @@ router.get("/:summName", function(req, res, next) {
   axios
     .get(URL)
     .then(response => {
-      // console.log("summs.js: /:summName fires");
-      // console.log(response.data);
       res.send(response.data);
     })
     .catch(error => {

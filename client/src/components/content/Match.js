@@ -43,7 +43,7 @@ class Match extends Component {
       this.props.summonerSpells,
       this.props.mDetail.participants[this.state.ourPlayerIndex].spell2Id
     );
-  } //end ComponentDidMount
+  }
 
   getOurPlayerIndex() {
     this.props.mDetail.participantIdentities.map((item, index) => {
@@ -116,6 +116,7 @@ class Match extends Component {
   }
 
   render() {
+    // using var details for readability
     var details = this.props.mDetail.participants[this.state.ourPlayerIndex];
     return (
       <div>
@@ -130,6 +131,7 @@ class Match extends Component {
                   <span className="loss">Loss</span>
                 )}
                 <p className="statResult" />
+                {/* better date format */}
                 <p className="statResult date">
                   {moment(new Date(this.props.mDetail.gameCreation)).format(
                     "MMM Do YYYY"
@@ -208,6 +210,7 @@ class Match extends Component {
                     <img
                       className="rounded-circle img-thumbnail imageSize"
                       src={`${dDragonUrl}img/item/${details.stats.item0}.png`}
+                      alt=""
                     />
                   )}
 
@@ -215,6 +218,7 @@ class Match extends Component {
                     <img
                       className="rounded-circle img-thumbnail imageSize"
                       src={`${dDragonUrl}img/item/${details.stats.item1}.png`}
+                      alt=""
                     />
                   )}
 
@@ -222,6 +226,7 @@ class Match extends Component {
                     <img
                       className="rounded-circle img-thumbnail imageSize"
                       src={`${dDragonUrl}img/item/${details.stats.item2}.png`}
+                      alt=""
                     />
                   )}
 
@@ -229,6 +234,7 @@ class Match extends Component {
                     <img
                       className="rounded-circle img-thumbnail imageSize"
                       src={`${dDragonUrl}img/item/${details.stats.item3}.png`}
+                      alt=""
                     />
                   )}
 
@@ -236,6 +242,7 @@ class Match extends Component {
                     <img
                       className="rounded-circle img-thumbnail imageSize"
                       src={`${dDragonUrl}img/item/${details.stats.item4}.png`}
+                      alt=""
                     />
                   )}
 
@@ -243,6 +250,7 @@ class Match extends Component {
                     <img
                       className="rounded-circle img-thumbnail imageSize"
                       src={`${dDragonUrl}img/item/${details.stats.item5}.png`}
+                      alt=""
                     />
                   )}
 
@@ -250,6 +258,7 @@ class Match extends Component {
                     <img
                       className="rounded-circle img-thumbnail imageSize"
                       src={`${dDragonUrl}img/item/${details.stats.item6}.png`}
+                      alt=""
                     />
                   )}
                 </div>
@@ -295,6 +304,7 @@ class Match extends Component {
 
                 <div className="row">
                   <div className="col-sm-6 statResult">
+                    {/* Shortening gameDuration's float */}
                     {(
                       (details.stats.totalMinionsKilled /
                         this.props.mDetail.gameDuration) *

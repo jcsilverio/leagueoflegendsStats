@@ -17,6 +17,7 @@ class MatchLog extends Component {
     this.getSummonerSpells = this.getSummonerSpells.bind(this);
   }
 
+  // Populate our initial state values
   componentDidMount() {
     this.getChampions();
     this.getSummonerRunes();
@@ -47,7 +48,6 @@ class MatchLog extends Component {
   }
 
   render() {
-    // console.log("this.state.champions", this.state.champions);
     return (
       <div className="MatchLog">
         <div className="row">
