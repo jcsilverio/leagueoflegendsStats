@@ -92,7 +92,7 @@ class Match extends Component {
                 {this.state.championId ? this.state.championId.name : null}
               </div>
               <div className="col-md-2 statHeader">
-                Champion runes
+                Runes
                 <br />
                 <img
                   className="runeSize"
