@@ -165,30 +165,36 @@ class Match extends Component {
               </div>
               <div className="col-md-2 statHeader">
                 Summoner spells
-                <img
-                  src={
-                    this.state.summonerSpell_01
-                      ? `${dDragonUrl}img/spell/${
-                          this.state.summonerSpell_01.id
-                        }.png`
-                      : null
-                  }
-                  alt=""
-                  width="40"
-                  height="40"
-                />
-                <img
-                  src={
-                    this.state.summonerSpell_02
-                      ? `${dDragonUrl}img/spell/${
-                          this.state.summonerSpell_02.id
-                        }.png`
-                      : null
-                  }
-                  alt=""
-                  width="40"
-                  height="40"
-                />
+                <div className="row">
+                  <div className="col-sm-6">
+                    <img
+                      className="rounded-circle img-thumbnail"
+                      src={
+                        this.state.summonerSpell_01
+                          ? `${dDragonUrl}img/spell/${
+                              this.state.summonerSpell_01.id
+                            }.png`
+                          : null
+                      }
+                      alt=""
+                      height="50"
+                    />
+                  </div>
+                  <div className="col-sm-6">
+                    <img
+                      className="rounded-circle img-thumbnail"
+                      src={
+                        this.state.summonerSpell_02
+                          ? `${dDragonUrl}img/spell/${
+                              this.state.summonerSpell_02.id
+                            }.png`
+                          : null
+                      }
+                      alt=""
+                      height="50"
+                    />
+                  </div>
+                </div>
               </div>
               <div className="col-md-2 statHeader">Summoner runes</div>
               <div className="col-md-2 statHeader">Items bought</div>
