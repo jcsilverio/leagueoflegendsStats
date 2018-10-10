@@ -61,7 +61,15 @@ class Match extends Component {
             </div>
 
             <div className="row">
-              <div className="col-md-2 statHeader">KDA</div>
+              <div className="col-md-2 statHeader">
+                K / D / A
+                <p className="statResult">
+                  {details.stats.kills} /{" "}
+                  <span className="red">{details.stats.deaths}</span> /{" "}
+                  {details.stats.assists}
+                </p>
+              </div>
+
               <div className="col-md-2 statHeader">
                 <div className="row">
                   <div className="col-sm-12 statHeader centerText">Creep</div>
