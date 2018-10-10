@@ -134,8 +134,12 @@ class Match extends Component {
                   )}
                 </p>
               </div>
-              <div className="col-md-2 champName">
-                {this.state.championId ? this.state.championId.name : null}
+              <div className="col-md-2">
+                <span className="champName">
+                  {this.state.championId ? this.state.championId.name : null}
+                </span>
+                <br />
+                <span> </span>
               </div>
               <div className="col-md-2 statHeader">
                 Runes
@@ -196,8 +200,8 @@ class Match extends Component {
                   </div>
                 </div>
               </div>
-              <div className="col-md-2 statHeader">Summoner runes</div>
-              <div className="col-md-2 statHeader">Items bought</div>
+
+              <div className="col-md-4 statHeader">Items bought</div>
             </div>
 
             <div className="row">
