@@ -2,7 +2,6 @@ import React, { Component } from "react";
 import PropTypes from "prop-types";
 var moment = require("moment");
 const runeUrl = "https://ddragon.leagueoflegends.com/cdn/img/";
-var details = null;
 
 class Match extends Component {
   constructor(props) {
