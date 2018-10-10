@@ -13,10 +13,14 @@ class MatchLog extends Component {
       runes: null
     };
     this.getChampions = this.getChampions.bind(this);
+    this.getSummonerRunes = this.getSummonerRunes.bind(this);
+    this.getSummonerSpells = this.getSummonerSpells.bind(this);
   }
 
   componentDidMount() {
     this.getChampions();
+    this.getSummonerRunes();
+    this.getSummonerSpells();
   }
 
   // switching to async/await for more clarity
@@ -26,6 +30,20 @@ class MatchLog extends Component {
     );
     const { data } = await response;
     this.setState({ champions: data.data });
+  }
+
+  async getSummonerSpells() {
+    const response = await fetch(`${dataDragonUrl}data/en_US/summoner.json`);
+    const { data } = await response.json();
+    this.setState({ summonerSpells: data });
+  }
+
+  async getSummonerRunes() {
+    const response = await fetch(
+      `${dataDragonUrl}data/en_US/runesReforged.json`
+    );
+    const data = await response.json();
+    this.setState({ runes: data });
   }
 
   render() {
