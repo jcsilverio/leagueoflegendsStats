@@ -59,7 +59,7 @@ class MatchLog extends Component {
         </div>
 
         <div>
-          {this.state.champions
+          {this.state.champions && this.state.summonerSpells
             ? (this.props.matchDetail || []).map((mDetail, index) => {
                 return (
                   <Match
@@ -68,6 +68,7 @@ class MatchLog extends Component {
                     ourSummonerId={this.props.ourSummonerId}
                     runes={this.state.runes}
                     champions={this.state.champions}
+                    summonerSpells={this.state.summonerSpells}
                   />
                 );
               })

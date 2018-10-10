@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import PropTypes from "prop-types";
 var moment = require("moment");
 const runeUrl = "https://ddragon.leagueoflegends.com/cdn/img/";
+const dDragonUrl = "https://ddragon.leagueoflegends.com/cdn/8.19.1/";
 
 class Match extends Component {
   constructor(props) {
@@ -9,12 +10,16 @@ class Match extends Component {
     this.state = {
       ourPlayerIndex: null,
       matchDetail: {},
-      championId: null
+      championId: null,
+      summonerSpell_01: null,
+      summonerSpell_02: null
     };
     this.getOurPlayerIndex = this.getOurPlayerIndex.bind(this);
     this.getRunes = this.getRunes.bind(this);
     this.getRuneAltText = this.getRuneAltText.bind(this);
     this.getChampion = this.getChampion.bind(this);
+    this.getSpell1 = this.getSpell1.bind(this);
+    this.getSpell2 = this.getSpell2.bind(this);
   }
 
   componentWillMount() {
@@ -26,7 +31,18 @@ class Match extends Component {
       this.props.champions,
       this.props.mDetail.participants[this.state.ourPlayerIndex].championId
     );
-  }
+
+    this.getSpell1(
+      this.props.summonerSpells,
+      this.props.mDetail.participants[this.state.ourPlayerIndex].spell1Id
+    );
+
+    this.getSpell2(
+      this.props.summonerSpells,
+      this.props.mDetail.participants[this.state.ourPlayerIndex].spell2Id
+    );
+  } //end ComponentDidMount
+
   getOurPlayerIndex() {
     this.props.mDetail.participantIdentities.map((item, index) => {
       return item.player.summonerId === this.props.ourSummonerId.id
@@ -39,6 +55,36 @@ class Match extends Component {
     if (runes) {
       const rune = runes.find(r => r.id === id);
       return `${runeUrl}${rune && rune.icon}`;
+    } else {
+      return "";
+    }
+  }
+
+  getSpell1(summonerSpells, id) {
+    console.log("GETSPELL1 FIRES");
+    console.log("THIS.PROPS.SUMMONERSPELLS", summonerSpells);
+    if (summonerSpells) {
+      for (let key in summonerSpells) {
+        console.log(
+          "Number(summonerSpells[key].key: ",
+          Number(summonerSpells[key].key)
+        );
+        console.log("id:", id);
+        if (Number(summonerSpells[key].key) === id) {
+          this.setState({ summonerSpell_01: summonerSpells[key] });
+        }
+      }
+    } else {
+      return "";
+    }
+  }
+  getSpell2(summonerSpells, id) {
+    if (summonerSpells) {
+      for (let key in summonerSpells) {
+        if (Number(summonerSpells[key].key) === id) {
+          this.setState({ summonerSpell_02: summonerSpells[key] });
+        }
+      }
     } else {
       return "";
     }
@@ -117,7 +163,33 @@ class Match extends Component {
                   )}`}
                 />
               </div>
-              <div className="col-md-2 statHeader">Summoner spells</div>
+              <div className="col-md-2 statHeader">
+                Summoner spells
+                <img
+                  src={
+                    this.state.summonerSpell_01
+                      ? `${dDragonUrl}img/spell/${
+                          this.state.summonerSpell_01.id
+                        }.png`
+                      : null
+                  }
+                  alt=""
+                  width="40"
+                  height="40"
+                />
+                <img
+                  src={
+                    this.state.summonerSpell_02
+                      ? `${dDragonUrl}img/spell/${
+                          this.state.summonerSpell_02.id
+                        }.png`
+                      : null
+                  }
+                  alt=""
+                  width="40"
+                  height="40"
+                />
+              </div>
               <div className="col-md-2 statHeader">Summoner runes</div>
               <div className="col-md-2 statHeader">Items bought</div>
             </div>
@@ -186,7 +258,8 @@ class Match extends Component {
 Match.propTypes = {
   mDetail: PropTypes.object.isRequired,
   ourSummonerId: PropTypes.any.isRequired,
-  champions: PropTypes.any.isRequired
+  champions: PropTypes.any.isRequired,
+  summonerSpells: PropTypes.any.isRequired
 };
 
 export default Match;
