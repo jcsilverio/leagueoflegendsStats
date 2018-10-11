@@ -34,14 +34,18 @@ class App extends Component {
     if (summName.trim().length) {
       // get summoner's name
       axios
-        .get(`/api/summs/${summName}`)
+        .get(`/api/summs/${summName}`, {
+          timeout: 5000
+        })
         .then(res => {
           this.setState({ summoner: res.data });
         })
         //get summoner's accountId
         .then(res => {
           axios
-            .get(`/api/matches/log/${this.state.summoner.accountId}`)
+            .get(`/api/matches/log/${this.state.summoner.accountId}`, {
+              timeout: 5000
+            })
             .then(res => {
               this.setState({ matches: res.data.matches.slice(0, 20) });
             })
@@ -49,7 +53,9 @@ class App extends Component {
             .then(res => {
               this.state.matches.map((match, index) => {
                 return axios
-                  .get(`/api/matches/detail/` + match.gameId)
+                  .get(`/api/matches/detail/` + match.gameId, {
+                    timeout: 5000
+                  })
                   .then(res => {
                     this.setState({
                       matchDetail: [...this.state.matchDetail, res.data],
@@ -66,14 +72,16 @@ class App extends Component {
             .catch(error => {
               this.setState({
                 matches: [],
-                error: `match error:  ${error}`
+                error: `Summoner Matches:  Not found`,
+                spinner: false
               });
             });
         })
         .catch(error => {
           this.setState({
             summoner: null,
-            error: `summ error: ${error}`
+            error: "Summoner Error: Not found",
+            spinner: false
           });
         });
     } else {
