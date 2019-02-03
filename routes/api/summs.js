@@ -4,7 +4,7 @@ const axios = require("axios");
 require("dotenv").config();
 const API_KEY = process.env.API_KEY;
 const HTTPS_ROOT = "https://na1.api.riotgames.com";
-const SUMM_URL = "/lol/summoner/v3/summoners/by-name/";
+const SUMM_URL = "/lol/summoner/v4/summoners/by-name/";
 
 // @route   GET api/:summName
 // @desc    summoner route
