@@ -18,6 +18,28 @@ class App extends Component {
       error: ""
     };
     this.getSummoner = this.getSummoner.bind(this);
+    this.randomStartingSummoner = this.randomStartingSummoner.bind(this);
+  }
+
+  componentDidMount() {
+    var chosenSummoner = this.randomStartingSummoner();
+    this.getSummoner(chosenSummoner);
+  }
+
+  randomStartingSummoner() {
+    var startingSummoners = [
+      "asyc",
+      "adrian riven",
+      "Shiphtur",
+      "Proto Kaisa",
+      "Autolykus"
+    ];
+
+    var startingSummonerIndex = Math.floor(
+      Math.random() * startingSummoners.length
+    );
+    console.log(startingSummoners[startingSummonerIndex]);
+    return startingSummoners[startingSummonerIndex];
   }
 
   getSummoner(summName) {
