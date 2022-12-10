@@ -1,6 +1,6 @@
 # leagueoflegendsStats
 
-https://loljs.herokuapp.com/
+
 
 - echo "API_KEY=" >> .env
 - npm install
